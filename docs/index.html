@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinpoint — AI-Powered GeoGuessr Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0a08;
+  --cyan:#d4a054;
+  --cyan2:#b8863a;
+  --cyan-dim:rgba(212,160,84,0.12);
+  --cyan-glow:rgba(212,160,84,0.25);
+  --white:#f5f0e8;
+  --grey:#8a7a6a;
+  --dark:#150f0a;
+  --surface:#1a1410;
+  --border:#2e2620;
+  --font-display:'Bebas Neue',cursive;
+  --font-mono:'Space Mono',monospace;
+  --font-body:'DM Sans',sans-serif;
+  /* Terminal keeps cold color for authenticity */
+  --terminal-accent:#00d4ff;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* ── CURSOR ── */
+#cursor{position:fixed;width:8px;height:8px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s,background .15s}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(212,160,84,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s}
+body:has(a:hover) #cursor,body:has(button:hover) #cursor{width:16px;height:16px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 3rem;
+  border-bottom:1px solid var(--border);
+  background:rgba(13,10,8,0.85);
+  backdrop-filter:blur(12px);
+}
+.nav-logo{font-family:var(--font-display);font-size:1.6rem;letter-spacing:.15em;color:var(--cyan);text-decoration:none}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{font-family:var(--font-mono);font-size:.75rem;padding:.5rem 1.25rem;border:1px solid var(--cyan);color:var(--cyan);background:transparent;cursor:none;letter-spacing:.08em;transition:background .2s,color .2s}
+.nav-cta:hover{background:var(--cyan);color:var(--bg)}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:0 3rem;
+  padding-top:5rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(212,160,84,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,160,84,0.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+.hero-bg-vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 70% 50%,transparent 40%,var(--bg) 80%);
+  pointer-events:none;
+}
+.hero-left{position:relative;z-index:2}
+.hero-eyebrow{
+  font-family:var(--font-mono);font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--cyan)}
+h1.hero-title{
+  font-family:var(--font-display);
+  font-size:clamp(4rem,7vw,7rem);
+  line-height:.95;
+  letter-spacing:.02em;
+  margin-bottom:1.5rem;
+}
+h1.hero-title span{color:var(--cyan)}
+.hero-subtitle{
+  font-size:1.05rem;line-height:1.75;
+  color:var(--grey);max-width:480px;
+  margin-bottom:2.5rem;font-weight:300;
+}
+.hero-actions{display:flex;gap:1rem;align-items:center;margin-bottom:3rem}
+.btn-primary{
+  font-family:var(--font-mono);font-size:.75rem;
+  padding:.75rem 2rem;
+  background:var(--cyan);color:var(--bg);
+  border:none;cursor:none;letter-spacing:.1em;
+  font-weight:700;transition:opacity .2s,transform .15s;
+}
+.btn-primary:hover{opacity:.85;transform:translateY(-1px)}
+.btn-ghost{
+  font-family:var(--font-mono);font-size:.75rem;
+  padding:.75rem 2rem;
+  background:transparent;color:var(--grey);
+  border:1px solid rgba(136,153,170,0.3);cursor:none;letter-spacing:.1em;
+  transition:color .2s,border-color .2s;
+}
+.btn-ghost:hover{color:var(--white);border-color:rgba(240,244,248,0.4)}
+.hero-stats{display:flex;gap:2.5rem}
+.hero-stat-num{font-family:var(--font-display);font-size:2rem;color:var(--cyan);display:block;line-height:1}
+.hero-stat-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-top:.25rem}
+.hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:600px}
+#globe-canvas{width:100%;height:100%}
+
+/* Terminal overlay on globe */
+.terminal-card{
+  position:absolute;bottom:10%;left:-5%;
+  background:rgba(13,10,8,0.92);
+  border:1px solid rgba(212,160,84,0.2);
+  padding:.75rem 1rem;
+  font-family:var(--font-mono);font-size:.65rem;
+  color:var(--cyan);width:240px;
+  backdrop-filter:blur(8px);
+}
+.terminal-card .t-label{color:var(--grey);margin-bottom:.4rem;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+.terminal-card .t-line{color:var(--white);margin:.15rem 0}
+.terminal-card .t-line span{color:var(--cyan)}
+.data-card{
+  position:absolute;top:15%;right:-2%;
+  background:rgba(13,10,8,0.88);
+  border:1px solid rgba(212,160,84,0.15);
+  padding:.75rem 1.1rem;
+  font-family:var(--font-mono);font-size:.65rem;
+  backdrop-filter:blur(8px);
+}
+.data-card-label{color:var(--grey);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
+.data-card-value{font-size:1.3rem;color:var(--cyan);font-weight:700;line-height:1}
+.data-card-sub{color:var(--grey);font-size:.6rem;margin-top:.2rem}
+
+/* ── MARQUEE ── */
+.marquee-wrap{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  overflow:hidden;padding:.6rem 0;
+  background:rgba(212,160,84,0.03);
+}
+.marquee-track{
+  display:flex;gap:0;
+  animation:marquee 35s linear infinite;
+  width:max-content;
+}
+.marquee-item{
+  font-family:var(--font-mono);font-size:.7rem;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--grey);white-space:nowrap;
+  padding:0 2rem;
+  border-right:1px solid var(--border);
+}
+.marquee-item:nth-child(odd){color:var(--cyan)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SHARED SECTION STYLES ── */
+section{padding:8rem 3rem;position:relative;overflow:hidden}
+.section-label{
+  font-family:var(--font-mono);font-size:.65rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:1rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.section-label::before{content:'';width:1.5rem;height:1px;background:var(--cyan)}
+
+/* ── STATS SECTION ── */
+#stats{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:6rem 3rem;
+}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+.stat-block{
+  padding:3rem 2.5rem;
+  border-right:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+.stat-block:last-child{border-right:none}
+.stat-block::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+  transform:scaleX(0);transition:transform .6s ease;
+}
+.stat-block.in-view::after{transform:scaleX(1)}
+.stat-number{
+  font-family:var(--font-display);
+  font-size:clamp(4rem,6vw,6.5rem);
+  line-height:1;color:var(--white);
+  display:block;
+}
+.stat-number .count{display:inline-block}
+.stat-number .suffix{color:var(--cyan)}
+.stat-desc{
+  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--grey);margin-top:.75rem;line-height:1.6;
+}
+
+/* ── FEATURE BLOCKS ── */
+.feature-block{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5rem;
+  align-items:center;
+  padding:7rem 3rem;
+  border-bottom:1px solid var(--border);
+}
+.feature-block.reverse{direction:rtl}
+.feature-block.reverse > *{direction:ltr}
+.feature-text{}
+.feature-big-num{
+  font-family:var(--font-display);
+  font-size:clamp(5rem,9vw,10rem);
+  line-height:.9;
+  color:rgba(212,160,84,0.07);
+  position:absolute;
+  top:-1rem;left:-1rem;
+  pointer-events:none;
+  letter-spacing:-.02em;
+  transition:color .6s;
+}
+.feature-text-inner{position:relative}
+.feature-heading{
+  font-family:var(--font-display);
+  font-size:clamp(2.5rem,4vw,4rem);
+  line-height:1.05;
+  letter-spacing:.02em;
+  margin-bottom:1.5rem;
+}
+.feature-heading span{color:var(--cyan)}
+.feature-body{
+  font-size:.95rem;line-height:1.8;
+  color:var(--grey);font-weight:300;
+  max-width:440px;margin-bottom:2rem;
+}
+.feature-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{
+  font-family:var(--font-mono);font-size:.65rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:.3rem .75rem;
+  border:1px solid rgba(212,160,84,0.25);
+  color:var(--cyan2);
+}
+.feature-visual{
+  position:relative;
+  background:var(--surface);
+  border:1px solid var(--border);
+  min-height:380px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.feature-visual::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(212,160,84,0.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,160,84,0.02) 1px,transparent 1px);
+  background-size:30px 30px;
+}
+
+/* Country confidence viz */
+.conf-bar-wrap{padding:2rem;position:relative;z-index:1;width:100%}
+.conf-title{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:1.5rem}
+.conf-bar{display:flex;align-items:center;gap:1rem;margin-bottom:.9rem}
+.conf-country{font-family:var(--font-mono);font-size:.7rem;color:var(--white);width:100px;text-align:right;flex-shrink:0}
+.conf-track{flex:1;height:3px;background:rgba(255,255,255,0.05);position:relative;overflow:visible}
+.conf-fill{height:100%;background:var(--cyan);transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.conf-fill.animate{transform:scaleX(1)}
+.conf-pct{font-family:var(--font-mono);font-size:.65rem;color:var(--cyan);min-width:3rem}
+.conf-dot{
+  position:absolute;right:0;top:50%;transform:translate(50%,-50%);
+  width:8px;height:8px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 10px var(--cyan);
+  opacity:0;transition:opacity .3s .9s;
+}
+.conf-fill.animate + .conf-dot,.conf-bar:has(.conf-fill.animate) .conf-dot{opacity:1}
+
+/* Map grid viz */
+.map-grid-viz{padding:1.5rem;position:relative;z-index:1;width:100%}
+.map-cell-grid{display:grid;grid-template-columns:repeat(30,1fr);gap:2px}
+.map-cell{
+  aspect-ratio:1;
+  border-radius:1px;
+  transition:background .25s, transform .15s, box-shadow .15s;
+  background:transparent;
+}
+.map-cell:hover{transform:scale(1.4);z-index:2;position:relative}
+
+/* Pipeline viz */
+.pipeline-viz{padding:2rem;position:relative;z-index:1;width:100%}
+.pipe-step{
+  display:flex;align-items:flex-start;gap:1rem;
+  margin-bottom:1.25rem;
+  opacity:.3;transform:translateX(-8px);
+  transition:opacity .4s, transform .4s;
+}
+.pipe-step.active{opacity:1;transform:translateX(0)}
+.pipe-icon{
+  width:32px;height:32px;border:1px solid rgba(212,160,84,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-size:.6rem;color:var(--cyan);
+  flex-shrink:0;
+}
+.pipe-step.active .pipe-icon{background:rgba(212,160,84,0.1);border-color:var(--cyan)}
+.pipe-name{font-family:var(--font-mono);font-size:.7rem;color:var(--white)}
+.pipe-detail{font-size:.75rem;color:var(--grey);margin-top:.2rem;font-weight:300}
+
+/* ── TERMINAL SECTION — keeps cold cyan intentionally ── */
+#terminal-section{
+  background:var(--dark);
+  border-top:1px solid var(--border);
+  padding:8rem 3rem;
+}
+.terminal-layout{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;
+}
+.terminal-window{
+  background:#050810;
+  border:1px solid rgba(0,212,255,0.2);
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  line-height:1.6;
+  overflow:hidden;
+}
+.terminal-header{
+  padding:.6rem 1rem;
+  border-bottom:1px solid rgba(0,212,255,0.1);
+  display:flex;align-items:center;gap:.6rem;
+  background:#030508;
+}
+.t-dot{width:8px;height:8px;border-radius:50%}
+.t-dot.r{background:#ff5f57}.t-dot.y{background:#febc2e}.t-dot.g{background:#28c840}
+.t-title{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-left:auto}
+.terminal-body{padding:1rem 1.25rem;min-height:380px;background:#050810}
+.t-prompt{color:#00d4ff}
+.t-cmd{color:#f0f4f8}
+.t-out{color:rgba(255,255,255,0.4);padding-left:1rem}
+.t-out.highlight{color:#00d4ff}
+.t-out.success{color:#4ade80}
+.t-out.warn{color:#fbbf24}
+.t-line-wrap{display:block;margin:.12rem 0}
+.cursor-blink{display:inline-block;width:.5em;height:1em;background:#00d4ff;animation:blink .8s step-end infinite;vertical-align:text-bottom}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── ACCURACY SECTION ── */
+#accuracy{padding:8rem 3rem;position:relative}
+.accuracy-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+}
+.accuracy-num-wrap{position:relative;display:flex;align-items:flex-end;gap:.5rem}
+.accuracy-big{
+  font-family:var(--font-display);
+  font-size:clamp(8rem,18vw,18rem);
+  line-height:.85;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(212,160,84,0.15);
+  position:relative;
+  overflow:hidden;
+}
+.accuracy-fill{
+  position:absolute;inset:0;
+  color:var(--cyan);
+  -webkit-text-stroke:0;
+  clip-path:inset(100% 0 0 0);
+  transition:clip-path 1.8s cubic-bezier(.16,1,.3,1);
+}
+.accuracy-big.filled .accuracy-fill{clip-path:inset(20% 0 0 0)}
+.accuracy-pct{
+  font-family:var(--font-display);font-size:3rem;color:var(--cyan);
+  margin-bottom:2.5rem;
+}
+.accuracy-desc{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-top:1rem}
+.accuracy-right{}
+.accuracy-breakdown{list-style:none;margin-top:2rem}
+.accuracy-breakdown li{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 0;border-bottom:1px solid var(--border);
+  font-size:.85rem;
+}
+.acc-label{color:var(--grey)}
+.acc-bar-wrap{width:120px;height:2px;background:rgba(255,255,255,0.06);position:relative}
+.acc-bar{height:100%;background:var(--cyan);width:0;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+.acc-val{font-family:var(--font-mono);font-size:.75rem;color:var(--white);min-width:3.5rem;text-align:right}
+
+/* ── TECH STACK ── */
+#tech{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  padding:8rem 3rem;
+}
+.tech-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  margin-top:4rem;
+  border:1px solid var(--border);
+}
+.tech-cell{
+  background:var(--surface);
+  padding:2.5rem 2rem;
+  transition:background .3s;
+}
+.tech-cell:hover{background:rgba(212,160,84,0.06)}
+.tech-cell-icon{
+  font-size:1.75rem;margin-bottom:1rem;
+  filter:grayscale(1) brightness(0.6);
+  transition:filter .3s;
+}
+.tech-cell:hover .tech-cell-icon{filter:grayscale(0) brightness(1)}
+.tech-cell-name{font-family:var(--font-mono);font-size:.8rem;color:var(--white);margin-bottom:.4rem;letter-spacing:.05em}
+.tech-cell-role{font-size:.75rem;color:var(--grey);font-weight:300}
+.tech-cell-tag{
+  display:inline-block;margin-top:.75rem;
+  font-family:var(--font-mono);font-size:.6rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:.2rem .5rem;border:1px solid rgba(212,160,84,0.2);color:var(--cyan2);
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:6rem 3rem 3rem;
+  border-top:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.footer-wordmark{
+  font-family:var(--font-display);
+  font-size:clamp(5rem,14vw,14rem);
+  line-height:.9;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(212,160,84,0.12);
+  letter-spacing:.04em;
+  user-select:none;
+  margin-bottom:4rem;
+  transition:-webkit-text-stroke-color .3s;
+}
+.footer-wordmark:hover{-webkit-text-stroke-color:rgba(212,160,84,0.4)}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  border-top:1px solid var(--border);
+  padding-top:2rem;
+}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--cyan)}
+.footer-copy{font-family:var(--font-mono);font-size:.65rem;color:rgba(138,122,106,0.5);letter-spacing:.08em}
+
+/* ── CANDIDATE ELIMINATION VIZ ── */
+.elim-viz{padding:2rem;position:relative;z-index:1;width:100%}
+.elim-list{display:flex;flex-direction:column;gap:.9rem;min-height:230px}
+.elim-row{
+  display:flex;align-items:center;gap:1rem;
+  transition:opacity .6s ease, transform .6s ease;
+  opacity:1;transform:translateX(0);
+}
+.elim-row.eliminated{opacity:.25;transform:translateX(6px)}
+.elim-row.eliminated .elim-name{text-decoration:line-through;color:var(--grey)}
+.elim-row.eliminated .elim-bar-fill{background:rgba(138,122,106,0.3)!important}
+.elim-row.winner .elim-name{color:var(--cyan);font-weight:700}
+.elim-row.winner .elim-bar-fill{background:var(--cyan)!important;box-shadow:0 0 12px rgba(212,160,84,0.5)}
+.elim-name{
+  font-family:var(--font-mono);font-size:.75rem;color:var(--white);
+  width:150px;flex-shrink:0;text-align:right;
+  transition:color .4s;
+}
+.elim-bar-wrap{flex:1;height:6px;background:rgba(255,255,255,0.05);position:relative;border-radius:2px;overflow:hidden}
+.elim-bar-fill{
+  height:100%;border-radius:2px;background:var(--cyan2);
+  width:0%;transition:width 1s cubic-bezier(.16,1,.3,1), background .4s;
+}
+.elim-pct{font-family:var(--font-mono);font-size:.7rem;color:var(--grey);min-width:3rem;text-align:right;transition:color .4s}
+.elim-row.winner .elim-pct{color:var(--cyan)}
+.elim-result{
+  margin-top:2rem;padding-top:1.5rem;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:baseline;
+  opacity:0;transition:opacity .6s ease;
+}
+.elim-result.show{opacity:1}
+.elim-result-label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--grey)}
+.elim-result-val{font-family:var(--font-display);font-size:2rem;color:var(--cyan);letter-spacing:.04em}
+
+/* ── META BOX HOVER ── */
+.meta-box{
+  padding:12px 14px;
+  background:rgba(212,160,84,0.06);
+  border:1px solid rgba(212,160,84,0.12);
+  border-radius:4px;
+  transition:background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor:default;
+}
+.meta-box:hover{
+  background:rgba(212,160,84,0.14);
+  border-color:rgba(212,160,84,0.5);
+  transform:translateY(-2px);
+  box-shadow:0 4px 20px rgba(212,160,84,0.12);
+}
+
+/* ── TAG HOVER ── */
+.tag{transition:background 0.2s, border-color 0.2s, color 0.2s}
+.tag:hover{background:rgba(212,160,84,0.15);border-color:rgba(212,160,84,0.6);color:var(--white)}
+
+/* ── PIPE STEP HOVER ── */
+.pipe-step{transition:opacity .4s, transform .4s, background 0.2s}
+.pipe-step:hover{background:rgba(212,160,84,0.05);border-radius:4px}
+.pipe-step:hover .pipe-icon{background:rgba(212,160,84,0.12);border-color:var(--cyan)}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.in-view{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.in-view{opacity:1;transform:translateX(0)}
+.stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}
+.stagger-4{transition-delay:.4s}.stagger-5{transition-delay:.5s}
+
+/* ── MISC ── */
+.cyan{color:var(--cyan)}
+.divider-line{height:1px;background:linear-gradient(90deg,transparent,rgba(212,160,84,0.25),transparent);margin:0 3rem}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Pinpoint</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#terminal-section">Pipeline</a></li>
+    <li><a href="#accuracy">Accuracy</a></li>
+    <li><a href="#tech">Tech</a></li>
+  </ul>
+  <button class="nav-cta">Try Demo →</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-vignette"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">AI-Powered GeoGuessing</div>
+    <h1 class="hero-title">WHERE IN<br>THE WORLD<br><span>ARE YOU?</span></h1>
+    <p class="hero-subtitle">A multi-modal AI pipeline that reads visual geography — road signs, vegetation, architecture, terrain — and triangulates your location with machine precision.</p>
+    <div class="hero-actions">
+      <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">View Pipeline ↓</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">1840<span style="color:var(--cyan)">+</span></span>
+        <div class="hero-stat-label">Reference Images</div>
+      </div>
+      <div>
+        <span class="hero-stat-num">125</span>
+        <div class="hero-stat-label">Countries</div>
+      </div>
+      <div>
+        <span class="hero-stat-num">13</span>
+        <div class="hero-stat-label">Meta Categories</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <canvas id="globe-canvas"></canvas>
+    <div class="terminal-card">
+      <div class="t-label">Live Analysis</div>
+      <div class="t-line">→ <span id="tc-country">country</span>: <span id="tc-country-val">Germany</span></div>
+      <div class="t-line">→ <span id="tc-conf">confidence</span>: <span id="tc-conf-val">86%</span></div>
+      <div class="t-line">→ <span id="tc-region">region</span>: <span id="tc-region-val">Western Europe</span></div>
+      <div class="t-line">→ <span id="tc-status">status</span>: <span id="tc-status-val">accept_prediction</span></div>
+    </div>
+    <div class="data-card">
+      <div class="data-card-label">Accuracy Score</div>
+      <div class="data-card-value">80<span style="font-size:.8rem">%</span></div>
+      <div class="data-card-sub">Country accuracy</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">Road Signs</span>
+    <span class="marquee-item">Vegetation Biomes</span>
+    <span class="marquee-item">Architecture Style</span>
+    <span class="marquee-item">Terrain Analysis</span>
+    <span class="marquee-item">Sky &amp; Light</span>
+    <span class="marquee-item">License Plates</span>
+    <span class="marquee-item">Language Detection</span>
+    <span class="marquee-item">Cultural Markers</span>
+    <span class="marquee-item">Road Markings</span>
+    <span class="marquee-item">Utility Poles</span>
+    <span class="marquee-item">Vehicle Types</span>
+    <span class="marquee-item">Soil Color</span>
+    <span class="marquee-item">Mountain Profiles</span>
+    <!-- dupe for loop -->
+    <span class="marquee-item">Road Signs</span>
+    <span class="marquee-item">Vegetation Biomes</span>
+    <span class="marquee-item">Architecture Style</span>
+    <span class="marquee-item">Terrain Analysis</span>
+    <span class="marquee-item">Sky &amp; Light</span>
+    <span class="marquee-item">License Plates</span>
+    <span class="marquee-item">Language Detection</span>
+    <span class="marquee-item">Cultural Markers</span>
+    <span class="marquee-item">Road Markings</span>
+    <span class="marquee-item">Utility Poles</span>
+    <span class="marquee-item">Vehicle Types</span>
+    <span class="marquee-item">Soil Color</span>
+    <span class="marquee-item">Mountain Profiles</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-block reveal stagger-1">
+      <span class="stat-number"><span class="count" data-target="1840" data-suffix="+">0</span><span class="suffix"></span></span>
+      <div class="stat-desc">Hand-curated reference<br>images across 125 nations</div>
+    </div>
+    <div class="stat-block reveal stagger-2">
+      <span class="stat-number"><span class="count" data-target="125" data-suffix="">0</span><span class="suffix"></span></span>
+      <div class="stat-desc">Countries in the<br>recognition database</div>
+    </div>
+    <div class="stat-block reveal stagger-3">
+      <span class="stat-number"><span class="count" data-target="15" data-suffix="">0</span><span class="suffix"></span></span>
+      <div class="stat-desc">Countries with sub-region<br>state-level reasoning</div>
+    </div>
+    <div class="stat-block reveal stagger-4">
+      <span class="stat-number"><span class="count" data-target="13" data-suffix="">0</span><span class="suffix"></span></span>
+      <div class="stat-desc">Meta categories spanning<br>all biomes &amp; cultures</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 1: Vision Analysis -->
+<div class="feature-block" id="features">
+  <div class="feature-text reveal-left">
+    <div class="section-label">Smart Capture</div>
+    <div class="feature-text-inner">
+      <div class="feature-big-num">01</div>
+      <h2 class="feature-heading">COMPUTER<br>VISION <span>PIPELINE</span></h2>
+      <p class="feature-body">OpenCV scores every captured frame for visual quality and geographic evidence density before any API call is made. Blurry frames, duplicates, and low-evidence views are automatically rejected — only the best screenshots reach Gemini.</p>
+      <div class="feature-tags">
+        <span class="tag">OpenCV</span>
+        <span class="tag">Quality Gating</span>
+        <span class="tag">Evidence Scoring</span>
+        <span class="tag">Smart Capture</span>
+      </div>
+    </div>
+  </div>
+  <div class="feature-visual reveal-right">
+    <div class="pipeline-viz" id="pipe-viz">
+      <div class="pipe-step active" data-delay="0">
+        <div class="pipe-icon">01</div>
+        <div>
+          <div class="pipe-name">Smart Capture</div>
+          <div class="pipe-detail">OpenCV quality + evidence scoring → keep/reject</div>
+        </div>
+      </div>
+      <div class="pipe-step active" data-delay="200">
+        <div class="pipe-icon">02</div>
+        <div>
+          <div class="pipe-name">Image Selection</div>
+          <div class="pipe-detail">Gemini picks best 3 from kept screenshots</div>
+        </div>
+      </div>
+      <div class="pipe-step active" data-delay="400">
+        <div class="pipe-icon">03</div>
+        <div>
+          <div class="pipe-name">First-Pass Reasoning</div>
+          <div class="pipe-detail">Gemini analyzes 13 meta categories → candidate countries</div>
+        </div>
+      </div>
+      <div class="pipe-step active" data-delay="600">
+        <div class="pipe-icon">04</div>
+        <div>
+          <div class="pipe-name">Reference Retrieval</div>
+          <div class="pipe-detail">Evidence-aware ranker fetches 1840+ reference images</div>
+        </div>
+      </div>
+      <div class="pipe-step active" data-delay="800">
+        <div class="pipe-icon">05</div>
+        <div>
+          <div class="pipe-name">Grounded Comparison</div>
+          <div class="pipe-detail">Live screenshots vs references → match verdicts per country</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE 2: Geo Reasoning -->
+<div class="feature-block reverse">
+  <div class="feature-visual reveal-left">
+    <div class="conf-bar-wrap">
+      <div class="conf-title">Meta categories analyzed — every round</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1rem">
+        <div class="meta-box">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,212,255,0.5);margin-bottom:6px">01</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#fff">Bollards</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:2px">106 countries</div>
+        </div>
+        <div class="meta-box">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,212,255,0.5);margin-bottom:6px">02</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#fff">Utility Poles</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:2px">101 countries</div>
+        </div>
+        <div class="meta-box">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,212,255,0.5);margin-bottom:6px">03</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#fff">Traffic Lights</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:2px">104 countries</div>
+        </div>
+        <div class="meta-box">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,212,255,0.5);margin-bottom:6px">04</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#fff">Terrain</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:2px">95 countries</div>
+        </div>
+        <div class="meta-box">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,212,255,0.5);margin-bottom:6px">05</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#fff">Road Signs</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:2px">56 countries</div>
+        </div>
+        <div class="meta-box">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,212,255,0.5);margin-bottom:6px">06</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#fff">License Plates</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:2px">51 countries</div>
+        </div>
+        <div class="meta-box">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,212,255,0.5);margin-bottom:6px">07</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#fff">Language/Script</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:2px">47 countries</div>
+        </div>
+        <div class="meta-box">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,212,255,0.5);margin-bottom:6px">08–13</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#fff">+6 more</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:2px">Flora · Architecture · Road surface · Markings · Street names · Signposts</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.05);font-family:var(--font-mono);font-size:10px;color:rgba(0,212,255,0.6)">
+        1,840+ reference images · scraped from geohints.com
+      </div>
+    </div>
+  </div>
+  <div class="feature-text reveal-right">
+    <div class="section-label">Reference Database</div>
+    <div class="feature-text-inner">
+      <div class="feature-big-num">02</div>
+      <h2 class="feature-heading">GROUNDED<br>GEO <span>REASONING</span></h2>
+      <p class="feature-body">Gemini compares live screenshots against retrieved reference images across all 13 meta categories. Each category — bollards, poles, terrain, vegetation, architecture and more — produces a match verdict per candidate country. More matches wins.</p>
+      <div class="feature-tags">
+        <span class="tag">Reference Retrieval</span>
+        <span class="tag">13 Meta Categories</span>
+        <span class="tag">Visual Comparison</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE 3: State Reasoning -->
+<div class="feature-block">
+  <div class="feature-text reveal-left">
+    <div class="section-label">State-Level Reasoning</div>
+    <div class="feature-text-inner">
+      <div class="feature-big-num">03</div>
+      <h2 class="feature-heading">STATE-LEVEL<br><span>PRECISION</span></h2>
+      <p class="feature-body">For 15 high-priority countries, the pipeline drills below the national level — inferring state, province, or region from micro-cues like road paint colors, typography conventions, and terrain profiles.</p>
+      <div class="feature-tags">
+        <span class="tag">Sub-National</span>
+        <span class="tag">15 Countries</span>
+        <span class="tag">Region Inference</span>
+        <span class="tag">Micro-Cue Analysis</span>
+      </div>
+    </div>
+  </div>
+  <div class="feature-visual reveal-right">
+    <div class="elim-viz">
+      <div class="conf-title" id="elim-label" style="margin-bottom:1.5rem">Sub-Location Reasoning — Australia</div>
+      <div class="elim-list" id="elim-list"></div>
+      <div class="elim-result" id="elim-result">
+        <span class="elim-result-label">Final state</span>
+        <span class="elim-result-val" id="elim-final">—</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider-line"></div>
+
+<!-- TERMINAL SECTION -->
+<section id="terminal-section">
+  <div class="terminal-layout">
+    <div class="reveal-left">
+      <div class="section-label">Pipeline Output</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4.5rem);line-height:1;letter-spacing:.02em;margin-bottom:1.5rem">REAL-TIME<br><span class="cyan">ANALYSIS</span><br>STREAM</h2>
+      <p style="font-size:.9rem;line-height:1.8;color:var(--grey);font-weight:300;max-width:380px;margin-bottom:2rem">Watch Pinpoint's pipeline execute — from raw frame ingestion through OpenCV pre-processing, Gemini inference, reference matching, and final geo-coordinate output.</p>
+      <div style="display:flex;flex-direction:column;gap:.75rem">
+        <div style="display:flex;align-items:center;gap:.75rem;font-family:var(--font-mono);font-size:.7rem;color:var(--grey)">
+          <div style="width:6px;height:6px;border-radius:50%;background:#4ade80"></div>
+          Full pipeline: ~3-5 minutes per round
+        </div>
+        <div style="display:flex;align-items:center;gap:.75rem;font-family:var(--font-mono);font-size:.7rem;color:var(--grey)">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--cyan)"></div>
+          Gemini 2.5 Flash — multi-modal vision
+        </div>
+        <div style="display:flex;align-items:center;gap:.75rem;font-family:var(--font-mono);font-size:.7rem;color:var(--grey)">
+          <div style="width:6px;height:6px;border-radius:50%;background:#fbbf24"></div>
+          Fallback: gemini-2.5-flash-lite on 503 errors
+        </div>
+      </div>
+    </div>
+    <div class="terminal-window reveal-right">
+      <div class="terminal-header">
+        <div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div>
+        <div class="t-title">main.py</div>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <span class="t-line-wrap"><span class="t-prompt">$</span> <span class="t-cmd">python main.py</span></span>
+        <span class="t-line-wrap t-out" id="tl-0" style="opacity:0">Press G to run exploration and analysis.</span>
+        <span class="t-line-wrap t-out highlight" id="tl-1" style="opacity:0">[SmartCapture] Visual quality score: 7.12</span>
+        <span class="t-line-wrap t-out" id="tl-2" style="opacity:0">[SmartCapture] Geo evidence score: 10.00</span>
+        <span class="t-line-wrap t-out" id="tl-3" style="opacity:0">[SmartCapture] Keeping screenshot 2/5 — road_signs_candidate detected</span>
+        <span class="t-line-wrap t-out highlight" id="tl-4" style="opacity:0">[Reasoner] First-pass reasoning succeeded with gemini-2.5-flash</span>
+        <span class="t-line-wrap t-out" id="tl-5" style="opacity:0">[Reasoner] Candidate countries: Germany, Austria, France</span>
+        <span class="t-line-wrap t-out" id="tl-6" style="opacity:0">[Retrieval] Germany coverage: 5/13 categories · 8 images</span>
+        <span class="t-line-wrap t-out highlight" id="tl-7" style="opacity:0">[Grounded] Valid reference images attached: 35</span>
+        <span class="t-line-wrap t-out" id="tl-8" style="opacity:0">[RegionalConsistency] No override needed: Germany is region-consistent</span>
+        <span class="t-line-wrap t-out" id="tl-9" style="opacity:0">[Confidence] Verified confidence recalibrated: 0.86</span>
+        <span class="t-line-wrap t-out success" id="tl-10" style="opacity:0">Final country: Germany (Strong, 86%)</span>
+        <span class="t-line-wrap t-out success" id="tl-11" style="opacity:0">Region: Western Europe · Recommendation: accept_prediction</span>
+        <span class="t-line-wrap" id="tl-cursor" style="opacity:0"><span class="cursor-blink"></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCURACY -->
+<section id="accuracy">
+  <div class="accuracy-inner">
+    <div>
+      <div class="section-label reveal">Top-1 Accuracy</div>
+      <div class="accuracy-num-wrap">
+        <div class="accuracy-big reveal" id="acc-num">
+          80
+          <div class="accuracy-fill">80</div>
+        </div>
+        <div class="accuracy-pct reveal stagger-1">%</div>
+      </div>
+      <div class="accuracy-desc reveal stagger-2">Country-level correct predictions<br>on held-out evaluation set</div>
+    </div>
+    <div class="accuracy-right">
+      <div class="section-label reveal">Performance Breakdown</div>
+      <h2 class="reveal stagger-1" style="font-family:var(--font-display);font-size:clamp(2rem,3vw,3rem);letter-spacing:.02em;line-height:1.1;margin-bottom:.5rem">BUILT FOR<br><span class="cyan">PRECISION</span></h2>
+      <p class="reveal stagger-2" style="font-size:.85rem;line-height:1.8;color:var(--grey);font-weight:300;margin-bottom:1.5rem">Rigorous evaluation across all 125 countries, with dedicated benchmarks for the 15 sub-region nations where granular reasoning is most valuable.</p>
+      <ul class="accuracy-breakdown reveal stagger-3" id="acc-breakdown">
+        <li>
+          <span class="acc-label">Country accuracy</span>
+          <div class="acc-bar-wrap"><div class="acc-bar" data-w="80"></div></div>
+          <span class="acc-val">80%+</span>
+        </li>
+        <li>
+          <span class="acc-label">Region accuracy</span>
+          <div class="acc-bar-wrap"><div class="acc-bar" data-w="87"></div></div>
+          <span class="acc-val">87%+</span>
+        </li>
+        <li>
+          <span class="acc-label">Definitive ID detection</span>
+          <div class="acc-bar-wrap"><div class="acc-bar" data-w="100"></div></div>
+          <span class="acc-val">100%</span>
+        </li>
+        <li>
+          <span class="acc-label">Sub-region (15 countries)</span>
+          <div class="acc-bar-wrap"><div class="acc-bar" data-w="60"></div></div>
+          <span class="acc-val">In progress</span>
+        </li>
+        <li>
+          <span class="acc-label">Reference database coverage</span>
+          <div class="acc-bar-wrap"><div class="acc-bar" data-w="88"></div></div>
+          <span class="acc-val">125 countries</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- TECH STACK -->
+<section id="tech">
+  <div class="section-label reveal">Built With</div>
+  <h2 class="reveal stagger-1" style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);letter-spacing:.02em;line-height:1;margin-bottom:.5rem">THE <span class="cyan">STACK</span></h2>
+  <p class="reveal stagger-2" style="font-size:.9rem;color:var(--grey);font-weight:300;max-width:500px;margin-top:.75rem">A tightly composed set of tools chosen for speed, accuracy, and maintainability — no bloat, no wrappers.</p>
+  <div class="tech-grid reveal stagger-3">
+    <div class="tech-cell">
+      <div class="tech-cell-icon">🔮</div>
+      <div class="tech-cell-name">Gemini 2.5 Flash</div>
+      <div class="tech-cell-role">Multi-modal vision for meta detection, country reasoning, reference comparison, and state-level identification across 8 specialized prompt layers</div>
+      <div class="tech-cell-tag">Core AI</div>
+    </div>
+    <div class="tech-cell">
+      <div class="tech-cell-icon">👁</div>
+      <div class="tech-cell-name">OpenCV</div>
+      <div class="tech-cell-role">Screenshot quality scoring, duplicate detection, geographic evidence density calculation — gates every frame before any API call</div>
+      <div class="tech-cell-tag">Vision</div>
+    </div>
+    <div class="tech-cell">
+      <div class="tech-cell-icon">🐍</div>
+      <div class="tech-cell-name">Python</div>
+      <div class="tech-cell-role">13-stage autonomous pipeline: smart capture → image selection → first-pass → retrieval → grounded comparison → regional consistency → confidence → final decision</div>
+      <div class="tech-cell-tag">Runtime</div>
+    </div>
+    <div class="tech-cell">
+      <div class="tech-cell-icon">🗄️</div>
+      <div class="tech-cell-name">Reference Database</div>
+      <div class="tech-cell-role">1,840+ images scraped from geohints.com across 13 meta categories and 125 countries — every image curated by GeoGuessr experts</div>
+      <div class="tech-cell-tag">Data</div>
+    </div>
+    <div class="tech-cell">
+      <div class="tech-cell-icon">🧭</div>
+      <div class="tech-cell-name">Regional Knowledge Base</div>
+      <div class="tech-cell-role">Hand-crafted JSON files for 15 countries covering state-level visual identifiers, distinguishers, common false positives, and Gemini reasoning hints</div>
+      <div class="tech-cell-tag">Geography</div>
+    </div>
+    <div class="tech-cell">
+      <div class="tech-cell-icon">⚡</div>
+      <div class="tech-cell-name">Evidence-Aware Retrieval</div>
+      <div class="tech-cell-role">Custom ranking engine scores reference images against live visual observations. Only candidate countries searched — never random alphabetical fallbacks</div>
+      <div class="tech-cell-tag">Retrieval</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wordmark">PINPOINT</div>
+  <div class="footer-bottom">
+    <ul class="footer-links">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">Docs</a></li>
+      <li><a href="#">API</a></li>
+      <li><a href="#">Research</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Pinpoint — AI-Powered Geographic Intelligence</div>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+
+/* ── THREE.JS GLOBE ── */
+(function(){
+  const canvas=document.getElementById('globe-canvas');
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const parent=canvas.parentElement;
+  const W=parent.clientWidth||600,H=parent.clientHeight||600;
+  renderer.setSize(W,H);
+  canvas.style.width='100%';canvas.style.height='100%';
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(45,W/H,.1,100);
+  cam.position.set(0,0,3.2);
+  /* GROUP — everything that should spin goes in here */
+  const globeGroup=new THREE.Group();
+  scene.add(globeGroup);
+  /* Globe sphere */
+  const geo=new THREE.SphereGeometry(1,64,64);
+  const mat=new THREE.MeshPhongMaterial({color:0x3a2c1a,emissive:0x4a3414,emissiveIntensity:.5,shininess:15,transparent:true,opacity:.97});
+  const globe=new THREE.Mesh(geo,mat);
+  globeGroup.add(globe);
+  /* Wireframe overlay — added to group so it rotates */
+  const wmat=new THREE.MeshBasicMaterial({color:0xd4a054,wireframe:true,transparent:true,opacity:.18});
+  globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(1.001,32,32),wmat));
+  /* Lat rings — added to group */
+  [-40,-20,0,20,40].forEach(lat=>{
+    const r=Math.cos(lat*Math.PI/180);
+    const y=Math.sin(lat*Math.PI/180);
+    const ring=new THREE.RingGeometry(r-.001,r+.001,128);
+    const rm=new THREE.MeshBasicMaterial({color:0xd4a054,transparent:true,opacity:lat===0?.15:.05,side:THREE.DoubleSide});
+    const m=new THREE.Mesh(ring,rm);
+    m.rotation.x=Math.PI/2;m.position.y=y;
+    globeGroup.add(m);
+  });
+  /* City pins — warm amber */
+  const cities=[
+    [51.5,-.09],[40.71,-74.0],[35.68,139.69],[-23.55,-46.63],[48.85,2.35],
+    [55.75,37.62],[1.35,103.82],[-33.86,151.2],[19.07,72.87],[-1.29,36.82],
+    [30.04,31.24],[6.45,3.39],[25.2,55.27],[-34.6,-58.38],[41.0,28.98],
+    [37.56,126.97],[13.75,100.5],[52.37,4.9]
+  ];
+  cities.forEach(([lat,lon])=>{
+    const phi=(90-lat)*Math.PI/180,theta=(lon+180)*Math.PI/180;
+    const x=-Math.sin(phi)*Math.cos(theta),y=Math.cos(phi),z=Math.sin(phi)*Math.sin(theta);
+    const dot=new THREE.Mesh(new THREE.SphereGeometry(.012,8,8),new THREE.MeshBasicMaterial({color:0xd4a054}));
+    dot.position.set(x,y,z);
+    const rg=new THREE.RingGeometry(.018,.024,16);
+    const rmat=new THREE.MeshBasicMaterial({color:0xd4a054,transparent:true,opacity:.5,side:THREE.DoubleSide});
+    const rm=new THREE.Mesh(rg,rmat);
+    rm.position.set(x,y,z);rm.lookAt(0,0,0);rm.rotateX(Math.PI/2);
+    globeGroup.add(dot);globeGroup.add(rm);
+  });
+  /* Atmosphere — warm amber glow */
+  const atmoMat=new THREE.MeshBasicMaterial({color:0xd4a054,transparent:true,opacity:.1,side:THREE.BackSide});
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.18,32,32),atmoMat));
+  const atmo2Mat=new THREE.MeshBasicMaterial({color:0xb8863a,transparent:true,opacity:.08,side:THREE.BackSide});
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.08,32,32),atmo2Mat));
+  /* Lights */
+  scene.add(new THREE.AmbientLight(0x4a3414,.8));
+  const dl=new THREE.DirectionalLight(0xd4a054,1.2);dl.position.set(2,2,2);scene.add(dl);
+  const dl2=new THREE.DirectionalLight(0xf5f0e8,.5);dl2.position.set(-2,-1,-2);scene.add(dl2);
+  /* Mouse tilt */
+  let mmy=0;
+  document.addEventListener('mousemove',e=>{mmy=(e.clientY/window.innerHeight-.5);});
+  /* Render loop — rotate the GROUP not just globe */
+  let t=0;
+  function render(){
+    requestAnimationFrame(render);
+    t+=.004;
+    globeGroup.rotation.y=t;
+    globeGroup.rotation.x+=(mmy*.3-globeGroup.rotation.x)*.04;
+    renderer.render(scene,cam);
+  }
+  render();
+  window.addEventListener('resize',()=>{
+    const W2=parent.clientWidth||600,H2=parent.clientHeight||600;
+    cam.aspect=W2/H2;cam.updateProjectionMatrix();
+    renderer.setSize(W2,H2);
+  });
+})();
+
+/* ── INTERSECTION OBSERVER ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in-view');
+      /* Counter animation */
+      if(e.target.querySelector('.count')){
+        e.target.querySelectorAll('.count').forEach(el=>{
+          const target=+el.dataset.target,suffix=el.dataset.suffix||'';
+          let start=0,dur=1800,startTime=null;
+          function step(ts){
+            if(!startTime)startTime=ts;
+            const prog=Math.min((ts-startTime)/dur,1);
+            const eased=1-Math.pow(1-prog,3);
+            el.textContent=Math.round(eased*target)+suffix;
+            if(prog<1)requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+      /* Accuracy fill */
+      if(e.target.id==='acc-num'){
+        setTimeout(()=>e.target.classList.add('filled'),200);
+      }
+      /* Accuracy bars */
+      if(e.target.id==='acc-breakdown'){
+        e.target.querySelectorAll('.acc-bar').forEach((b,i)=>{
+          setTimeout(()=>{b.style.width=b.dataset.w+'%'},i*150+200);
+        });
+      }
+    }
+  });
+},{threshold:.2});
+
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stat-block').forEach(el=>io.observe(el));
+
+/* ── CONFIDENCE BARS ── */
+const confIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.conf-fill').forEach((f,i)=>{
+        setTimeout(()=>{
+          f.style.width=(f.dataset.pct*100)+'%';
+          f.style.transform='scaleX(1)';
+          f.classList.add('animate');
+        },i*150+100);
+      });
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
+
+/* ── CANDIDATE ELIMINATION ANIMATION ── */
+(function(){
+  const list=document.getElementById('elim-list');
+  const label=document.getElementById('elim-label');
+  const resultBox=document.getElementById('elim-result');
+  const finalEl=document.getElementById('elim-final');
+  if(!list)return;
+
+  // Real-style sub-location reasoning rounds based on regional knowledge base
+  const rounds=[
+    {
+      country:'Australia',
+      candidates:[
+        {name:'Western Australia',pct:71,winner:true},
+        {name:'South Australia',pct:38},
+        {name:'Victoria',pct:22},
+        {name:'Queensland',pct:14},
+      ],
+    },
+    {
+      country:'United States',
+      candidates:[
+        {name:'Wyoming',pct:93,winner:true},
+        {name:'Montana',pct:31},
+        {name:'Colorado',pct:18},
+        {name:'Idaho',pct:12},
+      ],
+    },
+    {
+      country:'Brazil',
+      candidates:[
+        {name:'São Paulo',pct:68,winner:true},
+        {name:'Minas Gerais',pct:42},
+        {name:'Paraná',pct:25},
+        {name:'Rio de Janeiro',pct:19},
+      ],
+    },
+    {
+      country:'India',
+      candidates:[
+        {name:'Maharashtra',pct:64,winner:true},
+        {name:'Karnataka',pct:35},
+        {name:'Gujarat',pct:20},
+        {name:'Tamil Nadu',pct:11},
+      ],
+    },
+    {
+      country:'Canada',
+      candidates:[
+        {name:'Ontario',pct:75,winner:true},
+        {name:'Quebec',pct:28},
+        {name:'Manitoba',pct:15},
+        {name:'Alberta',pct:9},
+      ],
+    },
+    {
+      country:'Russia',
+      candidates:[
+        {name:'Krasnodar Krai',pct:58,winner:true},
+        {name:'Rostov Oblast',pct:39},
+        {name:'Stavropol Krai',pct:24},
+        {name:'Volgograd Oblast',pct:13},
+      ],
+    },
+    {
+      country:'Japan',
+      candidates:[
+        {name:'Hokkaido',pct:81,winner:true},
+        {name:'Tohoku',pct:29},
+        {name:'Kanto',pct:16},
+        {name:'Chubu',pct:10},
+      ],
+    },
+    {
+      country:'South Africa',
+      candidates:[
+        {name:'Mpumalanga',pct:55,winner:true},
+        {name:'KwaZulu-Natal',pct:47},
+        {name:'Eastern Cape',pct:31},
+        {name:'Free State',pct:18},
+      ],
+    },
+  ];
+
+  let idx=0;
+
+  function render(round){
+    label.style.opacity='0';
+    label.style.transition='opacity .3s';
+    list.style.opacity='0';
+    resultBox.classList.remove('show');
+
+    setTimeout(()=>{
+      label.textContent=`Sub-Location Reasoning — ${round.country}`;
+      list.innerHTML='';
+
+      round.candidates.forEach(c=>{
+        const row=document.createElement('div');
+        row.className='elim-row';
+        row.innerHTML=`
+          <span class="elim-name">${c.name}</span>
+          <div class="elim-bar-wrap"><div class="elim-bar-fill" style="width:0%"></div></div>
+          <span class="elim-pct">${c.pct}%</span>
+        `;
+        list.appendChild(row);
+      });
+
+      label.style.opacity='1';
+      list.style.opacity='1';
+      list.style.transition='opacity .3s';
+
+      // Animate bars filling in
+      requestAnimationFrame(()=>{
+        const rows=list.querySelectorAll('.elim-row');
+        rows.forEach((row,i)=>{
+          const fill=row.querySelector('.elim-bar-fill');
+          const pct=round.candidates[i].pct;
+          setTimeout(()=>{fill.style.width=pct+'%';},i*120+150);
+        });
+
+        // After bars fill, eliminate losers and highlight winner
+        setTimeout(()=>{
+          rows.forEach((row,i)=>{
+            if(round.candidates[i].winner){
+              row.classList.add('winner');
+            }else{
+              row.classList.add('eliminated');
+            }
+          });
+          // Show result
+          const winner=round.candidates.find(c=>c.winner);
+          finalEl.textContent=winner.name;
+          resultBox.classList.add('show');
+        },round.candidates.length*120+700);
+      });
+    },300);
+  }
+
+  render(rounds[0]);
+
+  setInterval(()=>{
+    idx=(idx+1)%rounds.length;
+    render(rounds[idx]);
+  },5500);
+})();
+
+/* ── TERMINAL CARD CYCLING ── */
+(function(){
+  const rounds=[
+    {country:'Germany',conf:'86%',region:'Western Europe',status:'accept_prediction'},
+    {country:'Australia',conf:'93%',region:'Oceania · W. Australia',status:'accept_prediction'},
+    {country:'Japan',conf:'78%',region:'East Asia',status:'seek_signage'},
+    {country:'Brazil',conf:'71%',region:'South America',status:'accept_prediction'},
+    {country:'India',conf:'82%',region:'South Asia',status:'accept_prediction'},
+    {country:'Colombia',conf:'64%',region:'Northern S. America',status:'seek_signage'},
+    {country:'Kenya',conf:'69%',region:'East Africa',status:'accept_prediction'},
+    {country:'Turkey',conf:'74%',region:'Middle East',status:'accept_prediction'},
+  ];
+  let idx=0;
+  const cv=document.getElementById('tc-country-val');
+  const cfv=document.getElementById('tc-conf-val');
+  const rv=document.getElementById('tc-region-val');
+  const sv=document.getElementById('tc-status-val');
+  if(!cv)return;
+
+  function updateCard(){
+    const r=rounds[idx];
+    const card=cv.closest('.terminal-card');
+    card.style.opacity='0';card.style.transition='opacity 0.2s';
+    setTimeout(()=>{
+      cv.textContent=r.country;
+      cfv.textContent=r.conf;
+      rv.textContent=r.region;
+      sv.textContent=r.status;
+      sv.style.color=r.status==='accept_prediction'?'#4ade80':'#fbbf24';
+      card.style.opacity='1';
+      idx=(idx+1)%rounds.length;
+    },250);
+  }
+  setInterval(updateCard,2500);
+})();
+
+/* ── TERMINAL TYPEWRITER ── */
+(function(){
+  const lines=document.querySelectorAll('#terminal-body [id^=tl-]');
+  const termIO=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      lines.forEach((line,i)=>{
+        setTimeout(()=>{
+          line.style.opacity='1';
+          line.style.transition='opacity .1s';
+        },i*220+400);
+      });
+      termIO.disconnect();
+    }
+  },{threshold:.3});
+  const term=document.getElementById('terminal-section');
+  if(term)termIO.observe(term);
+})();
+</script>
+</body>
+</html>
