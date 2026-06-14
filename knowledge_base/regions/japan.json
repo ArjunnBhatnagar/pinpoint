@@ -1,0 +1,114 @@
+{
+  "country": "Japan",
+  "regions": [
+    {
+      "name": "Hokkaido",
+      "states": ["Hokkaido"],
+      "visual_identifiers": [
+        "very wide straight roads unlike rest of Japan",
+        "European-style grid city planning",
+        "lavender and dairy farm fields",
+        "much lower population density than Honshu",
+        "specific Hokkaido road sign style",
+        "snow infrastructure even in summer",
+        "wide open agricultural landscape unusual for Japan"
+      ],
+      "state_distinguishers": {
+        "Hokkaido": "Only island with this feel — wide roads, grid cities, dairy farms, completely unlike the rest of Japan. Very distinctive."
+      },
+      "route_sign_clues": "Hokkaido uses specific route numbering. Wide roads are the biggest giveaway.",
+      "gemini_hint": "Wide straight roads + grid city + dairy farms + lavender = Hokkaido almost certainly. This is the most distinctive Japanese island from a GeoGuessr perspective.",
+      "common_false_positives": [
+        "Snow — also in northern Honshu in winter"
+      ]
+    },
+    {
+      "name": "Honshu North (Tohoku)",
+      "states": ["Aomori", "Iwate", "Miyagi", "Akita", "Yamagata", "Fukushima"],
+      "visual_identifiers": [
+        "mountainous forested terrain",
+        "rice paddies in valleys",
+        "traditional Japanese rural feel",
+        "specific Tohoku architecture",
+        "more snow than central Honshu",
+        "less dense than Tokyo area"
+      ],
+      "state_distinguishers": {
+        "Miyagi": "Sendai city infrastructure, more developed than other Tohoku",
+        "Aomori": "Northernmost Honshu, apple orchards, Aomori city port"
+      },
+      "route_sign_clues": "National Route numbers. Tohoku Expressway runs through region.",
+      "gemini_hint": "Rice paddies + mountains + traditional rural = Tohoku or central Honshu. Wide roads and dairy = Hokkaido not Tohoku.",
+      "common_false_positives": [
+        "Forested mountains — hard to distinguish from central Japan"
+      ]
+    },
+    {
+      "name": "Honshu Central (Kanto and Chubu)",
+      "states": ["Tokyo", "Kanagawa", "Saitama", "Chiba", "Ibaraki", "Tochigi", "Gunma", "Niigata", "Nagano", "Yamanashi", "Shizuoka", "Aichi", "Gifu"],
+      "visual_identifiers": [
+        "dense urban infrastructure near Tokyo",
+        "Mount Fuji visible from multiple prefectures",
+        "specific Kanto highway infrastructure",
+        "Nagoya urban area distinctive",
+        "Japan Alps in Nagano",
+        "tea fields in Shizuoka"
+      ],
+      "state_distinguishers": {
+        "Tokyo_metro": "Most dense urban in world, very specific Tokyo infrastructure",
+        "Nagano": "Japan Alps, ski resort infrastructure, very mountainous",
+        "Shizuoka": "Mount Fuji visible, tea plantation rows distinctive",
+        "Aichi": "Nagoya city, Toyota manufacturing infrastructure"
+      },
+      "route_sign_clues": "Tomei Expressway through Shizuoka/Aichi. Chuo Expressway through Nagano.",
+      "gemini_hint": "Mount Fuji visible = Shizuoka or Yamanashi. Tea plantation rows = Shizuoka. Japan Alps = Nagano. Most dense urban = Tokyo or Osaka area.",
+      "common_false_positives": [
+        "Dense urban — hard to distinguish Tokyo from Osaka metro visually"
+      ]
+    },
+    {
+      "name": "Honshu West (Kansai and Chugoku)",
+      "states": ["Osaka", "Kyoto", "Hyogo", "Nara", "Wakayama", "Mie", "Shiga", "Hiroshima", "Okayama", "Tottori", "Shimane", "Yamaguchi"],
+      "visual_identifiers": [
+        "Osaka urban density second to Tokyo",
+        "Kyoto traditional architecture",
+        "specific Kansai highway infrastructure",
+        "Hiroshima Peace Memorial area",
+        "Tottori sand dunes — unique in Japan",
+        "Seto Inland Sea coastal views"
+      ],
+      "state_distinguishers": {
+        "Kyoto": "Traditional temple and shrine architecture very distinctive",
+        "Tottori": "Sand dunes — only place in Japan",
+        "Hiroshima": "Peace dome area, specific city layout"
+      },
+      "route_sign_clues": "Meishin Expressway through Kansai. San-yo Expressway through Chugoku.",
+      "gemini_hint": "Traditional temple architecture = Kyoto almost certainly. Sand dunes = Tottori only. Seto Inland Sea island views = Hiroshima or Okayama.",
+      "common_false_positives": [
+        "Urban density — hard to distinguish Osaka from other large cities"
+      ]
+    },
+    {
+      "name": "Shikoku and Kyushu",
+      "states": ["Tokushima", "Kagawa", "Ehime", "Kochi", "Fukuoka", "Saga", "Nagasaki", "Kumamoto", "Oita", "Miyazaki", "Kagoshima"],
+      "visual_identifiers": [
+        "Shikoku more rural and mountainous",
+        "Kyushu more volcanic and subtropical",
+        "specific onsen (hot spring) infrastructure",
+        "Kagoshima with Sakurajima volcano visible",
+        "subtropical vegetation in southern Kyushu",
+        "specific Kyushu highway infrastructure"
+      ],
+      "state_distinguishers": {
+        "Kagoshima": "Sakurajima volcano visible — completely unique identifier",
+        "Nagasaki": "Hilly port city, specific Nagasaki architecture, peace memorial area",
+        "Oita": "Beppu hot spring steam vents, onsen infrastructure very visible"
+      },
+      "route_sign_clues": "Kyushu Expressway network. Ferry infrastructure for Shikoku.",
+      "gemini_hint": "Active volcano visible = Kagoshima/Sakurajima. Steam vents and onsen = Oita/Beppu. Very mountainous rural = Shikoku or Kyushu interior.",
+      "common_false_positives": [
+        "Subtropical vegetation — also in southern Honshu"
+      ]
+    }
+  ]
+}

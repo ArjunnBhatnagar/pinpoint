@@ -1,0 +1,92 @@
+{
+  "country": "South Africa",
+  "regions": [
+    {
+      "name": "Western Cape",
+      "states": ["Western Cape"],
+      "visual_identifiers": [
+        "fynbos vegetation unique to this region",
+        "Mediterranean climate landscape",
+        "Cape Dutch architecture distinctive",
+        "vineyard landscapes in Winelands",
+        "Table Mountain visible near Cape Town",
+        "specific Western Cape road sign style",
+        "dramatic mountain and ocean combination"
+      ],
+      "state_distinguishers": {
+        "Western_Cape": "Most distinctive province — fynbos, Cape Dutch architecture, Mediterranean feel completely unlike rest of South Africa"
+      },
+      "route_sign_clues": "N2 and N1 major routes. Blue and white SA national route signs.",
+      "gemini_hint": "Fynbos (low shrubby heathland) + Cape Dutch whitewashed architecture = Western Cape almost certainly. Table Mountain = Cape Town area confirmed.",
+      "common_false_positives": [
+        "Vineyard landscape — could be confused with Europe but fynbos and Cape Dutch architecture unique"
+      ]
+    },
+    {
+      "name": "Gauteng and surrounds",
+      "states": ["Gauteng", "North West", "Mpumalanga"],
+      "visual_identifiers": [
+        "most developed urban infrastructure in SA",
+        "Johannesburg and Pretoria urban areas",
+        "highveld plateau landscape",
+        "specific Gauteng highway infrastructure",
+        "gold mining history visible",
+        "specific South African suburban architecture"
+      ],
+      "state_distinguishers": {
+        "Gauteng": "Johannesburg/Pretoria urban area, most developed, specific N1/N3 highway infrastructure",
+        "Mpumalanga": "Kruger National Park proximity, Drakensberg escarpment, Blyde River Canyon area distinctive"
+      },
+      "route_sign_clues": "N1, N3, N12 major routes through Gauteng. Bilingual English/Afrikaans signs.",
+      "gemini_hint": "Dense urban highway infrastructure = Gauteng. Dramatic escarpment = Mpumalanga. Game reserve signage = Limpopo or Mpumalanga.",
+      "common_false_positives": [
+        "Highveld plateau — shared with Free State and North West"
+      ]
+    },
+    {
+      "name": "KwaZulu-Natal",
+      "states": ["KwaZulu-Natal"],
+      "visual_identifiers": [
+        "subtropical coastal vegetation",
+        "Indian Ocean coastal feel",
+        "Zulu cultural elements visible",
+        "Durban urban area distinctive",
+        "Drakensberg mountains in west",
+        "specific KZN road infrastructure",
+        "sugar cane fields"
+      ],
+      "state_distinguishers": {
+        "KZN_coast": "Durban subtropical coast, Indian cultural influence very visible",
+        "KZN_interior": "Drakensberg mountains, Zulu heartland cultural elements"
+      },
+      "route_sign_clues": "N2 along coast. N3 from Durban to Johannesburg.",
+      "gemini_hint": "Sugar cane fields + subtropical = KZN coast. Indian Ocean coastal city = Durban/KZN. Drakensberg dramatic escarpment = KZN or Mpumalanga border.",
+      "common_false_positives": [
+        "Subtropical coast — could be Mozambique or similar"
+      ]
+    },
+    {
+      "name": "Northern and Eastern Provinces",
+      "states": ["Limpopo", "Free State", "Northern Cape", "Eastern Cape"],
+      "visual_identifiers": [
+        "bushveld in Limpopo",
+        "vast open Free State plains",
+        "Karoo semi-desert in Northern/Eastern Cape",
+        "specific Karoo road infrastructure",
+        "game reserve signage in Limpopo",
+        "very flat open landscape in Free State"
+      ],
+      "state_distinguishers": {
+        "Limpopo": "Baobab trees visible, game reserve infrastructure, Kruger Park proximity",
+        "Northern_Cape": "Kimberley diamond mining history, Namaqualand wildflowers in season, Karoo desert landscape",
+        "Free_State": "Most flat open plains, agricultural landscape, Golden Gate Highlands in east"
+      },
+      "route_sign_clues": "N1 through Free State and Limpopo. N10 through Eastern Cape.",
+      "gemini_hint": "Baobab trees = Limpopo almost certainly. Karoo flat semi-desert = Northern or Eastern Cape. Game reserve signage = Limpopo. Completely flat wheat fields = Free State.",
+      "common_false_positives": [
+        "Karoo landscape — very distinctive but spans multiple provinces",
+        "Bushveld — shared between Limpopo and Mpumalanga"
+      ]
+    }
+  ]
+}

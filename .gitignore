@@ -1,0 +1,11 @@
+.env
+__pycache__/
+.claude/
+Country_Data/
+screenshots/
+runs/
+analysis/
+selected/
+*.log
+*_log.*
+*.pyc

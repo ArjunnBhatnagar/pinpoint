@@ -1,0 +1,10 @@
+mss
+Pillow
+opencv-python
+numpy
+keyboard
+pyautogui
+easyocr
+# For RTX GPU OCR, install a CUDA-enabled PyTorch build if your torch install is CPU-only.
+google-genai
+python-dotenv

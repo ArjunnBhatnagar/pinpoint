@@ -1,0 +1,122 @@
+{
+  "country": "Canada",
+  "regions": [
+    {
+      "name": "British Columbia",
+      "states": ["British Columbia"],
+      "visual_identifiers": [
+        "dramatic mountains meeting coast or valleys",
+        "very dense dark green conifer forests",
+        "specific BC road sign style — white and green",
+        "Pacific coast feel in coastal areas",
+        "BC Hydro infrastructure distinctive",
+        "specific BC yellow road markings on highways",
+        "temperate rainforest vegetation"
+      ],
+      "state_distinguishers": {
+        "Vancouver_area": "Urban density, specific BC Transit infrastructure, mountain backdrop to city",
+        "Interior_BC": "Drier pine forests, Okanagan valley vineyard landscape, more arid than coast"
+      },
+      "route_sign_clues": "BC uses specific blue and white provincial route markers. Highway 1 (Trans-Canada) runs through BC.",
+      "gemini_hint": "Very dramatic mountains + dark green rainforest + Pacific feel = BC. Blue and white BC route markers are distinctive. Okanagan vineyard landscape = Interior BC.",
+      "common_false_positives": [
+        "Dense conifer forests — also in Alberta and Washington State USA",
+        "Mountains — also in Alberta"
+      ]
+    },
+    {
+      "name": "Prairie Provinces",
+      "states": ["Alberta", "Saskatchewan", "Manitoba"],
+      "visual_identifiers": [
+        "extremely flat prairie landscape",
+        "grain elevators visible",
+        "canola or wheat fields",
+        "very wide straight roads",
+        "big open sky",
+        "specific prairie town architecture",
+        "Alberta has Rocky Mountains to the west"
+      ],
+      "state_distinguishers": {
+        "Alberta": "Rocky Mountains visible to west, oil industry infrastructure, more prosperous feel than Saskatchewan/Manitoba, specific AB route markers",
+        "Saskatchewan": "Most flat of all three, grain elevator culture, very sparse population density",
+        "Manitoba": "More lakes visible, transition toward boreal forest in north, Winnipeg urban area"
+      },
+      "route_sign_clues": "Alberta uses AB prefix. Saskatchewan uses SK prefix. Manitoba uses MB prefix on route markers.",
+      "gemini_hint": "Rocky Mountains visible to west = definitely Alberta. Flattest possible terrain with grain elevators = Saskatchewan. More lakes and boreal transition = Manitoba.",
+      "common_false_positives": [
+        "Flat prairie — all three provinces share this",
+        "Grain fields — common across all three",
+        "Wide straight roads — nationwide prairie feature"
+      ]
+    },
+    {
+      "name": "Ontario and Quebec",
+      "states": ["Ontario", "Quebec"],
+      "visual_identifiers": [
+        "French language on signs = Quebec",
+        "English only signs = Ontario",
+        "mixed deciduous and conifer forests",
+        "Great Lakes coastal areas in Ontario",
+        "specific Quebec highway sign style",
+        "specific Ontario highway sign style",
+        "Canadian Shield rocky terrain in places"
+      ],
+      "state_distinguishers": {
+        "Quebec": "French language on ALL signs — most reliable identifier. Specific Quebec blue and white route markers. Distinct Quebec architecture in rural areas.",
+        "Ontario": "English signs. Specific Ontario route markers. More American-feeling infrastructure near US border."
+      },
+      "route_sign_clues": "Quebec autoroutes use A prefix. Ontario uses Queen's Highway markers. Language on signs is THE most reliable identifier.",
+      "gemini_hint": "French on signs = Quebec, full stop. This is the most reliable provincial identifier in Canada. English only = Ontario or western provinces.",
+      "common_false_positives": [
+        "Mixed forests — both provinces share this",
+        "Rocky Shield terrain — both provinces share this"
+      ]
+    },
+    {
+      "name": "Atlantic Provinces",
+      "states": ["Nova Scotia", "New Brunswick", "Prince Edward Island", "Newfoundland"],
+      "visual_identifiers": [
+        "Atlantic Ocean coastal feel",
+        "fishing industry infrastructure",
+        "specific Maritime architecture",
+        "more rugged coastal terrain",
+        "older European-influenced towns",
+        "Acadian French culture in New Brunswick",
+        "PEI distinctive red soil"
+      ],
+      "state_distinguishers": {
+        "PEI": "Red soil is completely unique — most reliable identifier. Very flat island terrain. Potato farming landscape.",
+        "Newfoundland": "Most distinct feel — rugged rocky coastline, specific Newfoundland vernacular architecture, very remote",
+        "Nova_Scotia": "Cape Breton highlands in north, Halifax urban area in south",
+        "New_Brunswick": "Bilingual French/English signs, more forested than other Maritime provinces"
+      },
+      "route_sign_clues": "Each province has own route markers. PEI routes are numbered simply. NB has bilingual signs.",
+      "gemini_hint": "Red soil = PEI almost certainly. Bilingual French/English signs = New Brunswick. Very rugged remote rocky coast = Newfoundland. French on signs = Quebec or New Brunswick.",
+      "common_false_positives": [
+        "Atlantic coastal feel — hard to distinguish provinces without specific signs"
+      ]
+    },
+    {
+      "name": "Northern Territories",
+      "states": ["Yukon", "Northwest Territories", "Nunavut"],
+      "visual_identifiers": [
+        "subarctic or arctic landscape",
+        "permafrost infrastructure",
+        "very remote feel",
+        "midnight sun or aurora infrastructure",
+        "specific northern highway infrastructure",
+        "boreal forest transitioning to tundra"
+      ],
+      "state_distinguishers": {
+        "Yukon": "Alaska Highway runs through it, more mountainous, Whitehorse city infrastructure",
+        "NWT": "Yellowknife city, Great Slave Lake nearby, specific NWT infrastructure",
+        "Nunavut": "Arctic tundra, Inuit cultural infrastructure, no roads connecting communities"
+      },
+      "route_sign_clues": "Alaska Highway (Highway 1) through Yukon. Very few paved highways.",
+      "gemini_hint": "Extremely remote subarctic or arctic = northern territories. Alaska Highway signs = Yukon. Inuit cultural elements = Nunavut.",
+      "common_false_positives": [
+        "Remote subarctic feel — hard to distinguish territories"
+      ]
+    }
+  ]
+}

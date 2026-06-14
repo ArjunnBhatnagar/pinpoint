@@ -1,0 +1,75 @@
+{
+  "country": "Argentina",
+  "regions": [
+    {
+      "name": "Patagonia",
+      "states": ["Santa Cruz", "Chubut", "Neuquen", "Rio Negro", "Tierra del Fuego"],
+      "visual_identifiers": [
+        "dramatic Andean peaks in west",
+        "flat windswept steppe in east",
+        "very sparse population",
+        "specific Patagonian road infrastructure",
+        "guanaco warning signs on roads",
+        "Ruta Nacional 40 infrastructure",
+        "cold climate vegetation"
+      ],
+      "state_distinguishers": {
+        "Tierra_del_Fuego": "Southernmost roads in world, very distinctive end-of-world feel, Ushuaia city infrastructure",
+        "Santa_Cruz": "Perito Moreno glacier area, El Calafate tourist infrastructure",
+        "Neuquen": "More developed, Bariloche tourist area, ski resort infrastructure"
+      },
+      "route_sign_clues": "RN-40 (Ruta Nacional 40) runs length of Patagonia. Very distinctive blue and white Argentine signs.",
+      "gemini_hint": "End of world feel + beech forests = Tierra del Fuego. Glacier tourism signs = Santa Cruz. Ski resort infrastructure = Neuquen/Bariloche. RN-40 signs = Patagonia confirmed.",
+      "common_false_positives": [
+        "Flat steppe — shared across eastern Patagonia",
+        "Andean peaks — shared with Chile border area"
+      ]
+    },
+    {
+      "name": "Pampas and Buenos Aires",
+      "states": ["Buenos Aires Province", "Buenos Aires City", "La Pampa", "Santa Fe", "Entre Rios", "Cordoba"],
+      "visual_identifiers": [
+        "extremely flat agricultural pampas",
+        "soybean and corn fields",
+        "specific Argentine road sign style",
+        "Buenos Aires urban sprawl",
+        "specific pampas estancia architecture",
+        "temperate climate grassland"
+      ],
+      "state_distinguishers": {
+        "Buenos_Aires_City": "Massive urban area, specific CABA infrastructure, very European city feel",
+        "Cordoba": "Sierras de Cordoba hills, Cordoba city second largest in Argentina",
+        "Entre_Rios": "More rivers and streams, subtropical feel, Mesopotamia region"
+      },
+      "route_sign_clues": "RN-9 through Cordoba. RN-14 through Entre Rios. Autopistas near Buenos Aires.",
+      "gemini_hint": "Completely flat soybean fields = pampas provinces. European-style urban = Buenos Aires. Rolling hills = Cordoba sierras. Rivers and subtropical = Entre Rios.",
+      "common_false_positives": [
+        "Flat pampas — shared across region",
+        "Agricultural fields — shared across pampas provinces"
+      ]
+    },
+    {
+      "name": "Northwest Argentina",
+      "states": ["Salta", "Jujuy", "Tucuman", "Santiago del Estero", "Catamarca", "La Rioja"],
+      "visual_identifiers": [
+        "dramatic Andean terrain",
+        "colorful rock formations",
+        "quebrada (gorge) landscape",
+        "indigenous Andean cultural elements",
+        "very arid high altitude terrain",
+        "specific northwest Argentine architecture",
+        "llama and vicuna possible"
+      ],
+      "state_distinguishers": {
+        "Jujuy": "Quebrada de Humahuaca — dramatic colorful rock gorge, very distinctive UNESCO landscape",
+        "Salta": "Colonial architecture in city, cloud forest in east, salt flats in west",
+        "Tucuman": "More subtropical and green, sugarcane fields, smallest but most densely populated"
+      },
+      "route_sign_clues": "RN-9 runs through northwest. RN-40 along Andes.",
+      "gemini_hint": "Colorful layered rock gorge = Quebrada de Humahuaca = Jujuy. Sugarcane fields = Tucuman. Salt flats = Salta/Jujuy puna. Colonial architecture = Salta city.",
+      "common_false_positives": [
+        "Andean terrain — shared with Chile and Bolivia"
+      ]
+    }
+  ]
+}

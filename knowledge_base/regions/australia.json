@@ -1,0 +1,128 @@
+{
+  "country": "Australia",
+  "regions": [
+    {
+      "name": "Red Centre and Outback",
+      "states": ["Northern Territory", "outback Western Australia",
+                 "outback South Australia", "outback Queensland"],
+      "visual_identifiers": [
+        "distinctive red orange dirt",
+        "sparse spinifex grass clumps",
+        "very flat terrain with occasional low scrub",
+        "intense blue sky with no clouds",
+        "road trains visible on highways",
+        "very long straight roads to horizon",
+        "termite mounds"
+      ],
+      "state_distinguishers": {
+        "NT_vs_WA_outback": "NT has more red rock escarpments. WA outback more flat red sandy desert. NT has distinctive Darwin-area tropical top end.",
+        "Uluru_area": "Distinctive red rock monoliths = almost certainly Northern Territory."
+      },
+      "route_sign_clues": "NT uses black and white signs. WA uses specific green signs. Road names often include Stuart Highway, Nullarbor. IMPORTANT: Route numbers alone (A1, A87 etc) do not confirm a state — the same number formats are used nationally.",
+      "gemini_hint": "Red dirt + spinifex grass = Australian outback. Uluru-style red rock = Northern Territory. Termite mounds = NT or northern WA. Do not use road numbers alone to distinguish NT from outback WA or SA.",
+      "common_false_positives": [
+        "Route numbers like A1, A87 — same format used in all outback states",
+        "Red dirt road — present in NT, outback WA, outback SA and outback QLD",
+        "Flat featureless terrain — applies equally to outback WA, SA and QLD",
+        "Sparse dry scrub — common across all four outback states"
+      ]
+    },
+    {
+      "name": "Tropical North Queensland",
+      "states": ["Queensland north of Townsville"],
+      "visual_identifiers": [
+        "lush tropical green vegetation",
+        "sugarcane fields",
+        "specific Queensland road sign colors",
+        "tropical humidity visible",
+        "cassowary warning signs",
+        "Daintree-style rainforest"
+      ],
+      "state_distinguishers": {
+        "Far_North_vs_Southeast_QLD": "Far north tropical and lush. Southeast Queensland more subtropical and developed near Brisbane."
+      },
+      "route_sign_clues": "Queensland uses specific yellow and black route markers historically. IMPORTANT: Do not use a route number alone to confirm Queensland — verify the sign colour and shape.",
+      "gemini_hint": "Sugarcane fields + tropical vegetation = North Queensland. Cassowary warning sign = Far North Queensland confirmed. Lush tropical green alone is not enough — it also appears in northern NT and far north WA.",
+      "common_false_positives": [
+        "Lush green tropical vegetation — also present in Darwin/NT Top End",
+        "Queensland route numbers — the number itself is not unique; confirm by sign colour (yellow/black)",
+        "Rainforest — also present in northern NSW and parts of NT"
+      ]
+    },
+    {
+      "name": "Southeast Australia",
+      "states": ["New South Wales", "Victoria", "ACT"],
+      "visual_identifiers": [
+        "temperate eucalyptus woodland",
+        "green rolling hills",
+        "more developed road infrastructure",
+        "specific NSW and Victorian road signs",
+        "blue mountains visible west of Sydney",
+        "alpine areas in Victoria"
+      ],
+      "state_distinguishers": {
+        "NSW_vs_Victoria": "NSW signs are blue and yellow. Victorian signs are green and yellow. Victoria has more English-feeling countryside in some areas. IMPORTANT: Both states have tall eucalyptus and mountain ash forests — tall straight trees alone do NOT confirm WA over Victoria or NSW.",
+        "ACT": "Canberra distinctive planned city layout, wide boulevards, specific ACT government signage.",
+        "Victoria_tall_forests": "Victoria's Otway Ranges, Dandenong Ranges and East Gippsland contain very tall mountain ash and messmate forests. These can look similar to WA karri. Sign colour (green/yellow = Victoria) is the reliable distinguisher."
+      },
+      "route_sign_clues": "NSW uses blue and yellow distinctive signs. Victoria uses green and yellow. These are very reliable state identifiers. IMPORTANT: Route numbers like A440 exist in both Victoria and WA — never use a route number alone to confirm the state.",
+      "gemini_hint": "Blue and yellow road signs = New South Wales. Green and yellow road signs = Victoria. This colour difference is very reliable. Tall straight forest alone is NOT enough — both Victoria and WA have tall straight forests. Look for sign colour.",
+      "common_false_positives": [
+        "A440 route number — also exists in Western Australia; do not use alone",
+        "Tall straight trees / mountain ash forest — present in Victoria (Otways, Dandenongs, East Gippsland) as well as WA",
+        "Temperate eucalyptus forest — common across NSW, Victoria, SA and WA",
+        "Green rolling hills — present in both Victoria and NSW; not a distinguisher between the two",
+        "General Ax/Bx route numbers — same format used nationally"
+      ]
+    },
+    {
+      "name": "Western Australia Coast",
+      "states": ["Western Australia coastal and southwest"],
+      "visual_identifiers": [
+        "specific WA road sign style",
+        "southwest has distinctive karri and jarrah forests",
+        "wildflowers in season",
+        "Indian Ocean coastal feel",
+        "Perth urban sprawl infrastructure",
+        "specific red gravel roads in places"
+      ],
+      "state_distinguishers": {
+        "Southwest_WA": "Karri forest (very tall straight trees) is distinctive of southwest WA, BUT similar tall forests exist in Victoria (Otway Ranges, East Gippsland) and Tasmania. Confirm with WA-specific green road signs, not just tree height.",
+        "Perth_area": "Large modern Australian city with specific infrastructure."
+      },
+      "route_sign_clues": "WA uses specific green road signs. IMPORTANT: Route numbers like A1, A9, A440 exist in MULTIPLE Australian states. Do NOT use a route number alone to identify WA unless the sign format or colour is also visible and matches WA specifically. The South Western Highway (WA) is signed as State Route 1 in official signage, not just a painted number. A440 painted on a road does not confirm WA — A440 also exists in Victoria.",
+      "gemini_hint": "Very tall straight karri or jarrah forest COMBINED WITH WA-specific green road signs = Southwest Western Australia. Tall straight trees alone are NOT sufficient — Victoria and Tasmania also have very tall straight forests. Always require a second confirming clue (sign colour, WA-specific infrastructure) before assigning WA.",
+      "common_false_positives": [
+        "A440 road number — also exists in Victoria (Geelong area); do not use alone to confirm WA",
+        "Tall straight trees — karri/jarrah in WA but mountain ash and messmate equally tall in Victoria's Otway Ranges and East Gippsland",
+        "Dry eucalyptus forest — common across SA, WA, NSW and Victoria",
+        "General green road signs — used in multiple states; WA sign shape/format must be specifically identifiable",
+        "General Ax/Bx route numbers — same format used nationally, not WA-specific"
+      ]
+    },
+    {
+      "name": "South Australia and Tasmania",
+      "states": ["South Australia", "Tasmania"],
+      "visual_identifiers": [
+        "SA: dry Mediterranean scrub around Adelaide",
+        "SA: Barossa Valley wine country",
+        "SA: Nullarbor flat plain",
+        "Tasmania: very green, temperate rainforest",
+        "Tasmania: English countryside feel",
+        "Tasmania: distinctive older architecture"
+      ],
+      "state_distinguishers": {
+        "Tasmania_vs_mainland": "Tasmania looks distinctly different — much greener, more English countryside feel, older convict-era architecture. However, tall green forest alone does not confirm Tasmania over Victoria.",
+        "SA_wine_regions": "Barossa and Clare Valley have distinctive European-influenced winery architecture."
+      },
+      "route_sign_clues": "Tasmania has distinctive Tasmanian devil on some signs. SA uses specific sign formats. IMPORTANT: Do not use route numbers alone to confirm SA or Tasmania — verify sign shape and colour.",
+      "gemini_hint": "Very green English countryside feel in Australia = almost certainly Tasmania. Flat dry scrub with Mediterranean feel near city = South Australia. NOTE: Green temperate forest alone is not sufficient for Tasmania — Victoria also has green temperate forest. Look for older architecture, narrower roads, and the distinct Tasmanian feel.",
+      "common_false_positives": [
+        "Green temperate forest — also present in Victoria and parts of NSW; not Tasmania-specific alone",
+        "English countryside feel — also possible in parts of Victoria (Yarra Valley, Dandenongs)",
+        "Flat terrain — present in SA, WA, QLD and parts of NSW; not SA-specific",
+        "General Ax/Bx route numbers — same format used nationally"
+      ]
+    }
+  ]
+}

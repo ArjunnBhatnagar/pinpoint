@@ -1,0 +1,151 @@
+{
+  "Caribbean": [
+    "Puerto Rico",
+    "Dominican Republic",
+    "Cuba",
+    "Jamaica",
+    "Trinidad and Tobago",
+    "Haiti",
+    "Bahamas",
+    "Barbados"
+  ],
+  "Central America": [
+    "Honduras",
+    "Nicaragua",
+    "Guatemala",
+    "El Salvador",
+    "Costa Rica",
+    "Panama",
+    "Belize"
+  ],
+  "Northern South America": [
+    "Colombia",
+    "Venezuela",
+    "Ecuador",
+    "Guyana",
+    "Suriname"
+  ],
+  "Southern South America": [
+    "Argentina",
+    "Chile",
+    "Uruguay",
+    "Paraguay"
+  ],
+  "Andean South America": [
+    "Peru",
+    "Bolivia"
+  ],
+  "Brazil": [
+    "Brazil"
+  ],
+  "North America": [
+    "United States",
+    "Canada",
+    "Mexico"
+  ],
+  "Western Europe": [
+    "France",
+    "Belgium",
+    "Netherlands",
+    "Luxembourg",
+    "Ireland",
+    "United Kingdom"
+  ],
+  "Central Europe": [
+    "Germany",
+    "Austria",
+    "Switzerland",
+    "Poland",
+    "Czech Republic",
+    "Slovakia",
+    "Hungary"
+  ],
+  "Southern Europe": [
+    "Spain",
+    "Portugal",
+    "Italy",
+    "Greece",
+    "Croatia",
+    "Slovenia",
+    "Montenegro",
+    "Serbia",
+    "Albania",
+    "North Macedonia",
+    "Malta"
+  ],
+  "Northern Europe": [
+    "Denmark",
+    "Sweden",
+    "Norway",
+    "Finland",
+    "Iceland",
+    "Estonia",
+    "Latvia",
+    "Lithuania"
+  ],
+  "Eastern Europe": [
+    "Russia",
+    "Ukraine",
+    "Romania",
+    "Bulgaria"
+  ],
+  "Middle East": [
+    "Israel",
+    "Palestine",
+    "Jordan",
+    "Qatar",
+    "United Arab Emirates",
+    "Turkey"
+  ],
+  "South Asia": [
+    "India",
+    "Bangladesh",
+    "Sri Lanka",
+    "Bhutan"
+  ],
+  "Southeast Asia": [
+    "Cambodia",
+    "Myanmar",
+    "Thailand",
+    "Laos",
+    "Malaysia",
+    "Indonesia",
+    "Philippines",
+    "Singapore"
+  ],
+  "East Asia": [
+    "China",
+    "Japan",
+    "South Korea",
+    "Taiwan",
+    "Hong Kong"
+  ],
+  "Oceania": [
+    "Australia",
+    "New Zealand",
+    "Guam",
+    "American Samoa",
+    "Northern Mariana Islands",
+    "Christmas Island"
+  ],
+  "Southern Africa": [
+    "South Africa",
+    "Botswana",
+    "Lesotho",
+    "Eswatini"
+  ],
+  "East Africa": [
+    "Kenya",
+    "Uganda",
+    "Rwanda",
+    "Madagascar"
+  ],
+  "West Africa": [
+    "Ghana",
+    "Nigeria",
+    "Senegal"
+  ],
+  "North Africa": [
+    "Tunisia"
+  ]
+}

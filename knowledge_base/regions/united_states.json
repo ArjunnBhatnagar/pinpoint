@@ -1,0 +1,187 @@
+{
+  "country": "United States",
+  "regions": [
+    {
+      "name": "Desert Southwest",
+      "states": ["Arizona", "New Mexico", "Nevada", "Utah"],
+      "visual_identifiers": [
+        "red or orange rock formations",
+        "saguaro cactus present (Arizona only)",
+        "sparse desert scrub and Joshua trees",
+        "tan or beige road surface",
+        "adobe or stucco architecture",
+        "very dry bare soil or sand",
+        "flat topped mesas or buttes"
+      ],
+      "state_distinguishers": {
+        "Arizona_vs_NewMexico": "Saguaro cactus only grows in Arizona. New Mexico has more juniper and pinon pine. Arizona roads often have distinctive brown highway signs.",
+        "Nevada_vs_Utah": "Utah has iconic red/orange rock formations. Nevada desert is more grey-brown with sagebrush. Las Vegas-style infrastructure visible in Nevada.",
+        "Utah_vs_Arizona": "Utah has more dramatic red rock canyon scenery. Arizona flatter with saguaro."
+      },
+      "route_sign_clues": "Arizona uses dark brown signs. Utah has unique beehive state route shape. Nevada has distinctive silver/blue signs.",
+      "gemini_hint": "Saguaro cactus = almost certainly Arizona. Dramatic red canyon rock = likely Utah. Flat grey sagebrush desert = likely Nevada."
+    },
+    {
+      "name": "Pacific Northwest",
+      "states": ["Washington", "Oregon"],
+      "visual_identifiers": [
+        "dense dark green Douglas fir and conifer forests",
+        "wet environment with moss on surfaces",
+        "mountainous terrain with volcanic peaks",
+        "grey overcast skies very common",
+        "green lush vegetation year round",
+        "specific dark green road signs"
+      ],
+      "state_distinguishers": {
+        "Washington_vs_Oregon": "Extremely hard to distinguish visually. Washington has more volcanic peak visibility (Mount Rainier). Oregon coast more accessible. Look for WA vs OR route prefixes on signs."
+      },
+      "route_sign_clues": "Washington route signs have WA prefix. Oregon use OR prefix. Both use standard green highway signs.",
+      "gemini_hint": "Dense dark conifers with moss and overcast sky = Pacific Northwest. Volcanic peak visible = likely Washington."
+    },
+    {
+      "name": "Great Plains",
+      "states": ["Kansas", "Nebraska", "North Dakota", "South Dakota", "Iowa", "Oklahoma"],
+      "visual_identifiers": [
+        "extremely flat terrain extending to horizon",
+        "golden or green grain fields",
+        "very wide open sky taking up most of image",
+        "grain silos and agricultural infrastructure",
+        "straight roads disappearing into horizon",
+        "minimal trees except near farmhouses"
+      ],
+      "state_distinguishers": {
+        "Kansas_vs_Nebraska": "Very hard. Kansas slightly more southern feel, Oklahoma border has more red soil. Nebraska has more Sandhills terrain in west.",
+        "North_vs_South_Dakota": "Badlands terrain = South Dakota western region. Flat farmland could be either."
+      },
+      "route_sign_clues": "Each state has unique route sign shape. Kansas uses a sunflower outline. Nebraska plain rectangle. Oklahoma uses arrow shape.",
+      "gemini_hint": "Completely flat grain fields to horizon = Great Plains. Badlands red/grey eroded terrain = western South Dakota."
+    },
+    {
+      "name": "Rocky Mountain West",
+      "states": ["Wyoming", "Montana", "Idaho", "Colorado"],
+      "visual_identifiers": [
+        "high altitude grassland or sagebrush",
+        "distant mountain ranges visible",
+        "wide open valleys between mountain ranges",
+        "dry golden grassland in summer",
+        "sparse conifer forests on slopes",
+        "gravel or unpaved roads common in rural areas"
+      ],
+      "state_distinguishers": {
+        "Wyoming_vs_Montana": "Wyoming more open sagebrush basins. Montana has more dramatic mountain scenery and greener valleys. Wyoming route signs use WY prefix.",
+        "Colorado_vs_Wyoming": "Colorado has more ski resort infrastructure visible. Colorado vegetation greener. Denver urban area distinctive.",
+        "Idaho_vs_Montana": "Idaho has more agricultural valley feel. Montana more wilderness."
+      },
+      "route_sign_clues": "Wyoming WY prefix. Montana MT. Colorado CO. Idaho ID. All use standard US highway sign formats.",
+      "gemini_hint": "Open sagebrush basin with distant mountains = likely Wyoming or Montana. WY-XXX marking = Wyoming confirmed."
+    },
+    {
+      "name": "Deep South",
+      "states": ["Mississippi", "Alabama", "Louisiana", "Georgia", "South Carolina", "Arkansas"],
+      "visual_identifiers": [
+        "Spanish moss hanging from trees",
+        "live oak trees with wide canopy",
+        "humid lush green vegetation",
+        "flat or gently rolling terrain",
+        "older architecture with porches",
+        "red clay soil visible in places",
+        "cypress trees in swampy areas"
+      ],
+      "state_distinguishers": {
+        "Louisiana_vs_Mississippi": "Louisiana has more bayou/swamp environments. New Orleans-style architecture distinctive. Mississippi more agricultural.",
+        "Georgia_vs_South_Carolina": "Very similar. Georgia has more red clay roads. Coastal South Carolina has distinctive low country feel."
+      },
+      "route_sign_clues": "Louisiana signs have distinctive pelican. Georgia uses peach outline shape historically.",
+      "gemini_hint": "Spanish moss on oak trees = Deep South almost certainly. Bayou swamp = Louisiana. Red clay roads = Georgia or Alabama."
+    },
+    {
+      "name": "Northeast",
+      "states": ["Maine", "Vermont", "New Hampshire", "Massachusetts", "Connecticut", "Rhode Island", "New York", "Pennsylvania", "New Jersey"],
+      "visual_identifiers": [
+        "hardwood deciduous forests",
+        "stone walls along roadsides",
+        "white church steeples in villages",
+        "colonial style architecture",
+        "dense older towns with narrow roads",
+        "fall foliage in season"
+      ],
+      "state_distinguishers": {
+        "Maine_vs_Vermont": "Maine more coastal feel, lobster infrastructure. Vermont more inland dairy farming, distinctive green hills.",
+        "New_York_vs_Pennsylvania": "New York has distinctive yellow road markings. Pennsylvania uses specific green signs."
+      },
+      "route_sign_clues": "New York uses distinctive yellow and black signs for state routes. Massachusetts uses a pilgrim hat shape historically.",
+      "gemini_hint": "Stone walls + white church steeple + hardwood forests = New England. Yellow state route signs = New York."
+    },
+    {
+      "name": "Southeast",
+      "states": ["Florida", "North Carolina", "Tennessee", "Virginia", "Kentucky"],
+      "visual_identifiers": [
+        "Florida: palm trees, very flat, subtropical",
+        "Carolinas: pine forests, rolling hills",
+        "Tennessee/Kentucky: rolling green hills, horse farms",
+        "Virginia: mix of Appalachian and coastal plain"
+      ],
+      "state_distinguishers": {
+        "Florida_vs_everywhere": "Florida is unmistakable: completely flat, palm trees, subtropical vegetation, specific highway infrastructure.",
+        "North_vs_South_Carolina": "Very similar. Look for route sign prefixes NC vs SC."
+      },
+      "route_sign_clues": "Florida uses distinctive green signs. Tennessee uses specific shield shape.",
+      "gemini_hint": "Completely flat + palm trees = Florida almost certainly. Horse farms with white fencing = Kentucky or Virginia."
+    },
+    {
+      "name": "Midwest",
+      "states": ["Illinois", "Indiana", "Ohio", "Michigan", "Wisconsin", "Minnesota", "Missouri"],
+      "visual_identifiers": [
+        "rolling agricultural land",
+        "mix of corn and soybean fields",
+        "older industrial towns",
+        "Great Lakes proximity in northern states",
+        "deciduous forests mixed with farmland"
+      ],
+      "state_distinguishers": {
+        "Michigan_vs_Wisconsin": "Michigan has Upper Peninsula wilderness. Wisconsin more dairy farm feel. Both have Great Lakes access.",
+        "Illinois_vs_Indiana": "Illinois has Chicago urban influence spreading outward. Indiana more rural agricultural."
+      },
+      "route_sign_clues": "Illinois uses distinctive highway marker. Michigan uses specific diamond shape for some routes.",
+      "gemini_hint": "Flat corn/soybean fields = Midwest corn belt (Illinois, Indiana, Ohio, Iowa). Great Lakes visible = Michigan or Wisconsin."
+    },
+    {
+      "name": "Texas",
+      "states": ["Texas"],
+      "visual_identifiers": [
+        "massive wide highways with specific green signs",
+        "Texas specific highway infrastructure",
+        "mix of terrain from east piney woods to west desert",
+        "distinctive brown highway signs in Hill Country",
+        "very large ranch properties with specific fencing",
+        "specific Texas DOT road markings"
+      ],
+      "state_distinguishers": {
+        "East_Texas": "Piney woods, similar to Deep South",
+        "West_Texas": "Desert, similar to New Mexico",
+        "Hill_Country": "Rolling cedar hills, distinctive",
+        "Panhandle": "Flat like Great Plains"
+      },
+      "route_sign_clues": "Texas uses distinctive black and white highway markers. TX prefix on state routes.",
+      "gemini_hint": "Texas is large enough to look like many regions. Distinctive large green highway signs with TX prefix = Texas confirmed."
+    },
+    {
+      "name": "California",
+      "states": ["California"],
+      "visual_identifiers": [
+        "California poppy wildflowers",
+        "specific blue and yellow Caltrans highway signs",
+        "Mediterranean scrub chaparral vegetation",
+        "coastal redwood forests in north",
+        "Central Valley flat agricultural land",
+        "palm trees in southern urban areas",
+        "specific freeway overpass architecture"
+      ],
+      "state_distinguishers": {
+        "Northern_vs_Southern": "North has redwoods and fog. South has palm trees and desert. Central Valley is flat agricultural."
+      },
+      "route_sign_clues": "California uses distinctive blue/yellow highway signs. CA or Hwy prefix.",
+      "gemini_hint": "Blue and yellow highway signs = California. Redwood forest = Northern California coast."
+    }
+  ]
+}

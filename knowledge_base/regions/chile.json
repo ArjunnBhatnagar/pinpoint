@@ -1,0 +1,73 @@
+{
+  "country": "Chile",
+  "regions": [
+    {
+      "name": "Norte Grande and Norte Chico",
+      "states": ["Arica y Parinacota", "Tarapaca", "Antofagasta", "Atacama", "Coquimbo"],
+      "visual_identifiers": [
+        "Atacama Desert — driest place on earth",
+        "virtually no vegetation in places",
+        "dramatic coastal cliffs meeting desert",
+        "copper mining infrastructure",
+        "specific desert road infrastructure",
+        "salt flats visible",
+        "Andean peaks with snow"
+      ],
+      "state_distinguishers": {
+        "Atacama_Desert_Region": "Absolutely barren, no vegetation, most distinctive landscape in Chile",
+        "Coquimbo": "Pisco growing region, slightly more vegetation, La Serena city"
+      },
+      "route_sign_clues": "Ruta 5 (Pan-American Highway) runs through. Mining company road signs distinctive.",
+      "gemini_hint": "Completely barren desert = Atacama region = northern Chile. Copper mine infrastructure = Antofagasta. Salt flats = Atacama salt flat region.",
+      "common_false_positives": [
+        "Desert terrain — very distinctive, hard to confuse with other Chilean regions"
+      ]
+    },
+    {
+      "name": "Central Chile",
+      "states": ["Valparaiso", "Metropolitan (Santiago)", "O'Higgins", "Maule"],
+      "visual_identifiers": [
+        "Mediterranean climate vegetation",
+        "wine vineyard landscapes",
+        "specific Chilean road sign style",
+        "Andes visible to east",
+        "Pacific coast visible to west",
+        "Santiago urban sprawl",
+        "specific central Chilean architecture"
+      ],
+      "state_distinguishers": {
+        "Santiago_Metro": "Large urban sprawl, Andes backdrop, specific Santiago highway infrastructure",
+        "Valparaiso": "Colorful hillside port city, Pacific coastal feel, very distinctive architecture",
+        "Wine_regions": "Vineyard rows in valleys, winery infrastructure"
+      },
+      "route_sign_clues": "Ruta 5 through central Chile. Autopista del Sol, Autopista Central near Santiago.",
+      "gemini_hint": "Vineyard rows in Andean valley = central Chile wine country. Colorful hillside port city = Valparaiso. Large urban with Andes backdrop = Santiago.",
+      "common_false_positives": [
+        "Mediterranean scrub — similar to California or Spain"
+      ]
+    },
+    {
+      "name": "Lake District and Patagonia Chile",
+      "states": ["Araucania", "Los Rios", "Los Lagos", "Aysen", "Magallanes"],
+      "visual_identifiers": [
+        "dramatic green lakes and volcanoes",
+        "Araucaria monkey puzzle trees",
+        "temperate rainforest",
+        "very green and wet landscape",
+        "dramatic fjords in south",
+        "specific southern Chilean infrastructure",
+        "German-influenced architecture in lake district"
+      ],
+      "state_distinguishers": {
+        "Lake_District": "Perfect cone volcanoes, blue lakes, German/Swiss influenced architecture",
+        "Aysen": "Carretera Austral — famous gravel highway, dramatic fjords and glaciers",
+        "Magallanes": "Torres del Paine, Punta Arenas city, end of continent feel"
+      },
+      "route_sign_clues": "Carretera Austral (Route 7) through Patagonia — very distinctive mostly gravel road.",
+      "gemini_hint": "Perfect cone volcano + blue lake = Chilean Lake District. Carretera Austral gravel road signs = Aysen/southern Chile. Monkey puzzle (Araucaria) trees = Araucania region.",
+      "common_false_positives": [
+        "Temperate rainforest — also in southern Argentina"
+      ]
+    }
+  ]
+}

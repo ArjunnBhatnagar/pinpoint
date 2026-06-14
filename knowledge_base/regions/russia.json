@@ -1,0 +1,118 @@
+{
+  "country": "Russia",
+  "regions": [
+    {
+      "name": "European Russia West",
+      "states": ["Moscow Oblast", "Leningrad Oblast", "Novgorod Oblast", "Pskov Oblast", "Tver Oblast", "Vladimir Oblast"],
+      "visual_identifiers": [
+        "dense birch and pine forests",
+        "flat to gently rolling terrain",
+        "Soviet-era apartment blocks (khrushchyovka)",
+        "Cyrillic road signs in Russian",
+        "specific Russian federal highway signs",
+        "older road infrastructure with potholes common",
+        "onion dome church architecture visible in towns"
+      ],
+      "state_distinguishers": {
+        "Moscow_Oblast": "More developed infrastructure, Moscow Ring Road (MKAD) nearby, denser population, better road quality than other oblasts",
+        "Leningrad_Oblast": "Near St Petersburg, more Scandinavian feel in some areas, specific Finnish-influenced architecture in northwest corners",
+        "Rural_oblasts": "Very similar to each other, distinguish by road signs showing city names"
+      },
+      "route_sign_clues": "Russian federal highways use M prefix (M1, M10 etc). Regional roads use A or R prefix. Signs are in Cyrillic.",
+      "gemini_hint": "Look for city names on road signs in Cyrillic — that is the most reliable state identifier. Moscow region has noticeably better road quality. St Petersburg area has more European architectural feel.",
+      "common_false_positives": [
+        "Birch forests — appear across almost all of European Russia, not state-specific",
+        "Soviet apartment blocks — nationwide phenomenon",
+        "Flat terrain — most of European Russia is flat"
+      ]
+    },
+    {
+      "name": "Siberia West",
+      "states": ["Novosibirsk Oblast", "Omsk Oblast", "Tomsk Oblast", "Kemerovo Oblast", "Tyumen Oblast"],
+      "visual_identifiers": [
+        "vast flat steppe transitioning to taiga",
+        "very wide straight roads",
+        "extreme temperature infrastructure (thick utility poles, specific insulation)",
+        "sparse population visible",
+        "specific Siberian wooden house architecture",
+        "Trans-Siberian Highway infrastructure"
+      ],
+      "state_distinguishers": {
+        "Novosibirsk": "Largest Siberian city, more urban infrastructure visible",
+        "Tyumen_Oblast": "Oil wealth visible in better infrastructure, specific oil industry signage"
+      },
+      "route_sign_clues": "R-254 Irtysh Highway through Omsk/Novosibirsk. P-254, P-255 common in this region.",
+      "gemini_hint": "West Siberia is extremely flat with vast open spaces. Look for oil infrastructure near Tyumen. City name signs are the only reliable state identifier.",
+      "common_false_positives": [
+        "Taiga forest — appears across all of Siberia",
+        "Flat terrain — most of West Siberia is extremely flat",
+        "Wooden houses — appear across all rural Russia"
+      ]
+    },
+    {
+      "name": "Siberia East and Far East",
+      "states": ["Krasnoyarsk Krai", "Irkutsk Oblast", "Buryatia", "Zabaykalsky Krai", "Primorsky Krai", "Khabarovsk Krai", "Sakha Republic"],
+      "visual_identifiers": [
+        "dramatic mountain terrain in places",
+        "Lake Baikal area distinctive",
+        "more Asian influence in architecture near Chinese/Mongolian border",
+        "Primorsky has Pacific Ocean coastal feel",
+        "Sakha has permafrost infrastructure (houses on stilts)",
+        "taiga becomes more dramatic and hilly"
+      ],
+      "state_distinguishers": {
+        "Primorsky_Krai": "Pacific coast feel, more Asian commercial signage influence, Vladivostok urban area distinctive",
+        "Buryatia": "Buddhist temple architecture, Mongolian cultural influence visible",
+        "Sakha": "Extreme cold infrastructure, houses on stilts over permafrost, very remote feel"
+      },
+      "route_sign_clues": "M58 Amur Highway in Far East. Very few paved roads in Sakha.",
+      "gemini_hint": "Buddhist temples or Mongolian architecture = likely Buryatia. Pacific coast urban feel = Primorsky/Vladivostok. Houses on stilts = Sakha permafrost zone.",
+      "common_false_positives": [
+        "Mountainous taiga — hard to distinguish specific oblast from terrain alone"
+      ]
+    },
+    {
+      "name": "Ural Region",
+      "states": ["Sverdlovsk Oblast", "Chelyabinsk Oblast", "Perm Krai", "Bashkortostan", "Udmurtia"],
+      "visual_identifiers": [
+        "Ural mountains visible in places",
+        "industrial city infrastructure",
+        "mix of European and Asian Russia feel",
+        "specific Ural mountain terrain",
+        "heavy industrial signage in some areas"
+      ],
+      "state_distinguishers": {
+        "Sverdlovsk": "Yekaterinburg area, major city infrastructure",
+        "Bashkortostan": "Islamic architecture visible in places, Ufa city distinctive",
+        "Chelyabinsk": "Industrial heavy, specific factory infrastructure"
+      },
+      "route_sign_clues": "M5 Ural Highway runs through Chelyabinsk. M7 Volga through Bashkortostan.",
+      "gemini_hint": "Ural mountains visible = Ural region confirmed. Islamic architecture or mosque = likely Bashkortostan. Heavy industrial = likely Chelyabinsk or Sverdlovsk.",
+      "common_false_positives": [
+        "Industrial infrastructure — hard to distinguish specific oblast"
+      ]
+    },
+    {
+      "name": "Southern Russia and Caucasus",
+      "states": ["Krasnodar Krai", "Stavropol Krai", "Rostov Oblast", "Dagestan", "Chechnya", "North Ossetia"],
+      "visual_identifiers": [
+        "warmer Mediterranean or steppe climate",
+        "Black Sea coastal infrastructure in Krasnodar",
+        "Caucasus mountain peaks visible",
+        "more colorful architecture than northern Russia",
+        "specific southern Russian agricultural landscape",
+        "resort infrastructure near Sochi"
+      ],
+      "state_distinguishers": {
+        "Krasnodar": "Black Sea coast, resort feel, Sochi Olympic infrastructure, subtropical vegetation near coast",
+        "Dagestan": "Islamic architecture, mountainous terrain, Arabic/local script alongside Cyrillic",
+        "Rostov": "Flat Don steppe, agricultural plains, similar to Ukraine"
+      },
+      "route_sign_clues": "M4 Don Highway through Rostov/Krasnodar. Resort signage near Sochi.",
+      "gemini_hint": "Subtropical vegetation + Black Sea = Krasnodar near Sochi. Islamic architecture + Caucasus mountains = Dagestan or Chechnya. Flat sunflower fields = Rostov or Krasnodar steppe.",
+      "common_false_positives": [
+        "Steppe terrain — shared with Ukraine and Kazakhstan"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "country": "Nigeria",
+  "regions": [
+    {
+      "name": "Southwest (Yoruba)",
+      "states": ["Lagos", "Ogun", "Oyo", "Osun", "Ondo", "Ekiti"],
+      "visual_identifiers": [
+        "Lagos megacity infrastructure",
+        "yellow danfo minibuses in Lagos",
+        "specific Lagos bridge and island infrastructure",
+        "tropical forest vegetation",
+        "specific Yoruba architectural elements",
+        "very dense urban in Lagos"
+      ],
+      "state_distinguishers": {
+        "Lagos": "Yellow danfo buses — most distinctive identifier in Nigeria, massive coastal megacity, Third Mainland Bridge infrastructure",
+        "Ibadan": "Second largest city, specific Ibadan urban feel, less coastal"
+      },
+      "route_sign_clues": "Lagos-Ibadan Expressway very distinctive. Green Nigerian highway signs.",
+      "gemini_hint": "Yellow danfo minibuses = Lagos confirmed. Massive coastal megacity = Lagos. Tropical forest with Nigerian signage = Southwest.",
+      "common_false_positives": [
+        "Tropical forest — shared with south Nigeria"
+      ]
+    },
+    {
+      "name": "Southeast (Igbo)",
+      "states": ["Anambra", "Imo", "Enugu", "Ebonyi", "Abia"],
+      "visual_identifiers": [
+        "dense tropical vegetation",
+        "specific Igbo architectural styles",
+        "more hilly terrain than southwest",
+        "specific southeastern Nigerian road style",
+        "Onitsha market infrastructure"
+      ],
+      "state_distinguishers": {
+        "Anambra": "Onitsha largest market in Africa, Niger River crossing infrastructure",
+        "Enugu": "Coal mining history, more hilly terrain"
+      },
+      "route_sign_clues": "Enugu-Onitsha Expressway.",
+      "gemini_hint": "Niger River crossing + huge market = Onitsha/Anambra. Hilly terrain in southern Nigeria = Southeast.",
+      "common_false_positives": [
+        "Tropical vegetation — shared with southwest"
+      ]
+    },
+    {
+      "name": "North Nigeria",
+      "states": ["Kano", "Kaduna", "Katsina", "Sokoto", "Zamfara", "Kebbi", "Niger State", "Jigawa", "Bauchi", "Gombe", "Yobe", "Borno"],
+      "visual_identifiers": [
+        "Sahel savanna vegetation",
+        "dry dusty landscape",
+        "Islamic architecture dominant",
+        "mud brick architecture in places",
+        "very flat terrain",
+        "specific Hausa architectural style",
+        "Arabic script alongside English"
+      ],
+      "state_distinguishers": {
+        "Kano": "Ancient walled city infrastructure, Kano City historic center, most populous northern city",
+        "Borno": "Lake Chad proximity, most remote northeastern feel"
+      },
+      "route_sign_clues": "Abuja-Kano Expressway. Arabic script on some signs in north.",
+      "gemini_hint": "Mud brick architecture + Islamic style + Sahel = Northern Nigeria. Ancient walled city = Kano. Arabic script + very dry = far north.",
+      "common_false_positives": [
+        "Sahel savanna — shared with Niger, Chad, Mali across border"
+      ]
+    },
+    {
+      "name": "Federal Capital and Middle Belt",
+      "states": ["FCT Abuja", "Plateau", "Nassarawa", "Benue", "Kogi", "Kwara"],
+      "visual_identifiers": [
+        "Abuja planned city infrastructure",
+        "very modern highways near Abuja",
+        "specific Nigerian federal infrastructure",
+        "transition zone vegetation",
+        "rocky plateau terrain in Jos area"
+      ],
+      "state_distinguishers": {
+        "Abuja_FCT": "Planned city — very wide roads, modern government buildings, specific Abuja roundabout infrastructure",
+        "Plateau": "Jos Plateau high altitude, cooler climate than surrounding areas, rocky terrain"
+      },
+      "route_sign_clues": "Abuja has very specific planned city road infrastructure.",
+      "gemini_hint": "Very wide planned roads + modern government buildings = Abuja FCT. Rocky high plateau = Jos/Plateau State. Niger-Benue river confluence area = Kogi.",
+      "common_false_positives": [
+        "Transition vegetation — between north and south Nigeria"
+      ]
+    }
+  ]
+}

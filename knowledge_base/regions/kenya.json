@@ -1,0 +1,88 @@
+{
+  "country": "Kenya",
+  "regions": [
+    {
+      "name": "Nairobi and Central",
+      "states": ["Nairobi", "Central Kenya", "Kiambu", "Muranga", "Nyeri", "Kirinyaga"],
+      "visual_identifiers": [
+        "Nairobi modern city infrastructure",
+        "specific Kenyan road sign style",
+        "tea plantation rows on hillsides",
+        "Mount Kenya visible",
+        "specific Nairobi highway infrastructure",
+        "green highland landscape"
+      ],
+      "state_distinguishers": {
+        "Nairobi": "Largest East African city, specific Nairobi matatu infrastructure, modern CBD",
+        "Central_Kenya": "Tea and coffee plantations, very green highlands, Mount Kenya backdrop"
+      },
+      "route_sign_clues": "A2, A3 major routes from Nairobi.",
+      "gemini_hint": "Modern East African city = Nairobi. Tea plantation rows on green hills = Central Kenya. Mount Kenya snow peak visible = Central Kenya confirmed.",
+      "common_false_positives": [
+        "Green highlands — also in Uganda and Rwanda"
+      ]
+    },
+    {
+      "name": "Rift Valley",
+      "states": ["Nakuru", "Naivasha", "Baringo", "Turkana", "West Pokot"],
+      "visual_identifiers": [
+        "dramatic Rift Valley escarpment",
+        "flamingo lakes visible",
+        "semi-arid terrain in north",
+        "acacia trees on valley floor",
+        "specific Rift Valley road infrastructure",
+        "very dramatic landscape"
+      ],
+      "state_distinguishers": {
+        "Nakuru_area": "Lake Nakuru flamingos, Rift Valley escarpment visible",
+        "Turkana": "Extremely arid, Lake Turkana jade sea visible, most remote northern region"
+      },
+      "route_sign_clues": "A104 highway through Rift Valley.",
+      "gemini_hint": "Dramatic escarpment walls = Rift Valley. Pink flamingos on lake = Nakuru. Extremely arid jade-colored lake = Turkana.",
+      "common_false_positives": [
+        "Acacia savanna — shared across East Africa"
+      ]
+    },
+    {
+      "name": "Coast Province",
+      "states": ["Mombasa", "Kwale", "Kilifi", "Tana River", "Lamu"],
+      "visual_identifiers": [
+        "Indian Ocean coastal feel",
+        "Swahili architectural style",
+        "coral stone buildings",
+        "palm trees along coast",
+        "specific Mombasa infrastructure",
+        "Arabic/Islamic cultural influence"
+      ],
+      "state_distinguishers": {
+        "Mombasa": "Island city infrastructure, Mombasa Old Town Swahili architecture, port city feel",
+        "Lamu": "Most preserved Swahili town, no cars on island, very traditional feel"
+      },
+      "route_sign_clues": "A14 coastal highway.",
+      "gemini_hint": "Swahili coral stone architecture = Kenya or Tanzania coast. Mombasa port infrastructure = Mombasa confirmed. No vehicles + traditional Swahili = Lamu.",
+      "common_false_positives": [
+        "Coastal tropical — could be Tanzania coast"
+      ]
+    },
+    {
+      "name": "Western and Nyanza",
+      "states": ["Kisumu", "Kakamega", "Busia", "Siaya", "Homa Bay", "Migori"],
+      "visual_identifiers": [
+        "Lake Victoria shore infrastructure",
+        "lush green vegetation unlike dry Kenya",
+        "specific western Kenyan architecture",
+        "fishing industry infrastructure",
+        "sugarcane fields in Kakamega"
+      ],
+      "state_distinguishers": {
+        "Kisumu": "Lake Victoria port city, specific Kisumu lakeside infrastructure",
+        "Kakamega": "Kakamega rainforest area, sugarcane fields, most forested part of Kenya"
+      },
+      "route_sign_clues": "A1 highway through western Kenya.",
+      "gemini_hint": "Lake Victoria visible = Western Kenya, Uganda, or Tanzania. Sugarcane fields = Kakamega. Lush green unlike typical Kenya = Western Kenya confirmed.",
+      "common_false_positives": [
+        "Lake Victoria shore — also in Uganda and Tanzania"
+      ]
+    }
+  ]
+}

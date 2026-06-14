@@ -1,0 +1,90 @@
+{
+  "country": "Colombia",
+  "regions": [
+    {
+      "name": "Andean Region",
+      "states": ["Cundinamarca", "Antioquia", "Valle del Cauca", "Caldas", "Risaralda", "Quindio", "Tolima", "Huila", "Boyaca", "Nariño"],
+      "visual_identifiers": [
+        "dramatic Andean mountain terrain",
+        "coffee plantation rows on steep hillsides",
+        "specific Colombian road infrastructure",
+        "colorful bus and truck culture",
+        "Bogota urban area infrastructure",
+        "Medellin urban valley infrastructure",
+        "specific Colombian highway signs"
+      ],
+      "state_distinguishers": {
+        "Bogota_area": "High altitude 2600m city, TransMilenio red BRT buses distinctive, very specific Bogota urban infrastructure",
+        "Medellin_area": "Valley city surrounded by mountains, Metro cable cars visible, specific Medellin urban feel",
+        "Coffee_region": "Coffee plantation rows, bamboo guadua forests, colorful Jeep Willys as taxis"
+      },
+      "route_sign_clues": "Ruta Nacional prefix. Transversal and Troncal highway names.",
+      "gemini_hint": "Red TransMilenio BRT buses = Bogota. Cable cars on mountain = Medellin. Colorful Jeep Willys taxis = Coffee Region. Coffee rows on steep hills = Antioquia or Coffee Region.",
+      "common_false_positives": [
+        "Andean terrain — shared with Ecuador and Peru",
+        "Coffee plantations — also in Ecuador"
+      ]
+    },
+    {
+      "name": "Caribbean Coast",
+      "states": ["Atlantico", "Bolivar", "Magdalena", "Cesar", "La Guajira", "Cordoba", "Sucre"],
+      "visual_identifiers": [
+        "Caribbean coastal feel",
+        "flat tropical landscape",
+        "Cartagena colonial architecture",
+        "specific coastal Colombian infrastructure",
+        "dry tropical vegetation in La Guajira",
+        "Wayuu indigenous culture in La Guajira"
+      ],
+      "state_distinguishers": {
+        "Cartagena_area": "Walled colonial city architecture, Caribbean resort infrastructure",
+        "La_Guajira": "Extremely arid desert peninsula, Wayuu indigenous settlements, flamingo lagoons"
+      },
+      "route_sign_clues": "Troncal del Caribe coastal highway.",
+      "gemini_hint": "Colonial walled city = Cartagena. Extreme desert + indigenous settlements = La Guajira. Flat tropical coast = Colombian Caribbean.",
+      "common_false_positives": [
+        "Caribbean coast — could be Venezuela coast"
+      ]
+    },
+    {
+      "name": "Pacific Coast and Amazon",
+      "states": ["Choco", "Cauca coast", "Amazonas", "Vaupes", "Guainia", "Putumayo"],
+      "visual_identifiers": [
+        "extremely wet tropical rainforest in Choco",
+        "Amazon basin in east",
+        "very remote infrastructure",
+        "specific Afro-Colombian cultural elements in Choco",
+        "Amazon river tributaries"
+      ],
+      "state_distinguishers": {
+        "Choco": "Wettest place in world, Afro-Colombian culture, very limited road infrastructure",
+        "Amazonas": "Amazon river, Leticia city on Amazon, indigenous Amazon culture"
+      },
+      "route_sign_clues": "Very limited roads in these regions.",
+      "gemini_hint": "Extremely dense wet jungle with no roads = Choco or Amazon Colombia. Amazon river infrastructure = Leticia/Amazonas.",
+      "common_false_positives": [
+        "Amazon jungle — shared with Brazil, Peru, Ecuador"
+      ]
+    },
+    {
+      "name": "Llanos and Eastern Plains",
+      "states": ["Meta", "Casanare", "Arauca", "Vichada", "Guaviare"],
+      "visual_identifiers": [
+        "vast flat grassland plains",
+        "similar to Venezuelan llanos",
+        "oil infrastructure in Casanare",
+        "specific llanos road infrastructure",
+        "very flat horizon to horizon"
+      ],
+      "state_distinguishers": {
+        "Casanare": "Oil industry infrastructure, Yopal city",
+        "Meta": "Villavicencio city, gateway to llanos, more developed than other llanos"
+      },
+      "route_sign_clues": "Ruta 40 through Meta.",
+      "gemini_hint": "Flat treeless grassland + oil infrastructure = Casanare llanos. Gateway city to plains = Villavicencio/Meta.",
+      "common_false_positives": [
+        "Flat grassland llanos — also in Venezuela"
+      ]
+    }
+  ]
+}

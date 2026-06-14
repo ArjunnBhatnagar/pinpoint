@@ -1,0 +1,102 @@
+{
+  "country": "India",
+  "regions": [
+    {
+      "name": "South India",
+      "states": ["Tamil Nadu", "Kerala", "Karnataka", "Andhra Pradesh", "Telangana"],
+      "visual_identifiers": [
+        "Dravidian temple architecture with gopuram towers",
+        "coconut palm trees very common",
+        "specific South Indian script on signs",
+        "lush tropical vegetation",
+        "specific South Indian auto rickshaw colors by state",
+        "distinct South Indian house architecture"
+      ],
+      "state_distinguishers": {
+        "Tamil_Nadu": "Tamil script on signs. Yellow and black auto rickshaws. Specific temple architecture.",
+        "Kerala": "Malayalam script. Green lush backwaters. Specific Kerala house style with sloped roofs.",
+        "Karnataka": "Kannada script. Bangalore tech infrastructure visible near city.",
+        "Andhra_Telangana": "Telugu script. Red soil. Specific infrastructure."
+      },
+      "route_sign_clues": "Sign language is the most reliable identifier. Tamil = Tamil Nadu. Malayalam = Kerala. Kannada = Karnataka. Telugu = AP/Telangana.",
+      "gemini_hint": "Script on signs is THE most reliable identifier in India. Tamil script = Tamil Nadu. Malayalam curved script = Kerala. Coconut palms + specific script = South India confirmed."
+    },
+    {
+      "name": "North India Plains",
+      "states": ["Uttar Pradesh", "Bihar", "Jharkhand", "Haryana", "Punjab", "Rajasthan"],
+      "visual_identifiers": [
+        "Hindi script dominant on signs",
+        "flat Gangetic plain terrain",
+        "wheat and sugarcane agriculture",
+        "specific North Indian truck art styles",
+        "older road infrastructure",
+        "specific North Indian town architecture",
+        "dust and haze common"
+      ],
+      "state_distinguishers": {
+        "Rajasthan": "Desert terrain, sand dunes, specific Rajasthani architecture, camel carts possible.",
+        "Punjab": "More prosperous farming, specific house styles, Gurmukhi script visible alongside Hindi.",
+        "UP_vs_Bihar": "UP slightly more developed. Bihar more rural. Difficult to distinguish."
+      },
+      "route_sign_clues": "NH prefix for national highways. State routes use UP, BR, RJ etc prefixes.",
+      "gemini_hint": "Sand dunes + desert + Rajasthani architecture = Rajasthan. Gurmukhi script alongside Hindi = Punjab. Flat dusty plain with Hindi signs = Gangetic plains (UP, Bihar)."
+    },
+    {
+      "name": "West India",
+      "states": ["Maharashtra", "Gujarat", "Goa"],
+      "visual_identifiers": [
+        "Marathi or Gujarati script on signs",
+        "Goa: Portuguese colonial architecture",
+        "Goa: specific laterite stone buildings",
+        "Mumbai: very dense urban infrastructure",
+        "Gujarat: specific Gujarati house styles",
+        "dry scrub in interior Maharashtra"
+      ],
+      "state_distinguishers": {
+        "Goa": "Portuguese colonial architecture is unmistakable. White churches. Specific laterite stone. Very distinctive.",
+        "Maharashtra_vs_Gujarat": "Marathi script vs Gujarati script on signs. Mumbai suburban infrastructure distinctive.",
+        "Gujarat": "Gujarati script. Specific house decoration styles. Dry terrain in Kutch."
+      },
+      "route_sign_clues": "MH (Maharashtra), GJ (Gujarat) prefixes.",
+      "gemini_hint": "Portuguese church architecture + laterite stone = Goa almost certainly. Gujarati script on signs = Gujarat."
+    },
+    {
+      "name": "Northeast India",
+      "states": ["Assam", "Meghalaya", "Manipur", "Nagaland", "Mizoram", "Tripura", "Arunachal Pradesh", "Sikkim"],
+      "visual_identifiers": [
+        "very green lush hills",
+        "looks more Southeast Asian than rest of India",
+        "specific Northeast Indian facial features on people",
+        "tea gardens in Assam",
+        "tribal architecture in hill states",
+        "specific Eastern Himalayan vegetation"
+      ],
+      "state_distinguishers": {
+        "Assam": "Tea garden rows very distinctive. Brahmaputra river visible. Specific Assamese architecture.",
+        "Meghalaya_Sikkim": "Very green misty hills. Looks almost like Switzerland in places.",
+        "Manipur_Nagaland": "More remote hill terrain. Specific tribal architectural elements."
+      },
+      "route_sign_clues": "NH routes. English script more common here than Hindi.",
+      "gemini_hint": "Tea garden rows = Assam almost certainly. Misty green hills with almost Swiss feel = Meghalaya or Sikkim."
+    },
+    {
+      "name": "Central and East India",
+      "states": ["Madhya Pradesh", "Chhattisgarh", "Odisha", "West Bengal"],
+      "visual_identifiers": [
+        "dense forest areas in MP and Chhattisgarh",
+        "tribal regions with specific architecture",
+        "West Bengal: Bengali script on signs",
+        "Kolkata: specific colonial and modern mix",
+        "Odisha: specific Odishan temple architecture",
+        "sal and teak forest common"
+      ],
+      "state_distinguishers": {
+        "West_Bengal": "Bengali script on signs is very distinctive. Kolkata infrastructure.",
+        "Odisha": "Odishan script on signs. Specific temple architecture.",
+        "MP_vs_Chhattisgarh": "Very similar. Dense forest. Difficult to distinguish."
+      },
+      "route_sign_clues": "WB (West Bengal), OD (Odisha), MP, CG prefixes.",
+      "gemini_hint": "Bengali script = West Bengal. Odishan script = Odisha. Dense sal forest = Central India tribal belt."
+    }
+  ]
+}

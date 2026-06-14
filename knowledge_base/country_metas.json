@@ -1,0 +1,475 @@
+{
+  "version": "1.0",
+  "description": "Country-specific GeoGuessr visual meta identifiers. tier1 = highly distinctive and reliable. tier2 = supporting evidence. elimination_clues = how to distinguish from common confusions.",
+  "countries": {
+    "Japan": {
+      "tier1_identifiers": [
+        "White utility poles with multiple horizontal crossbars in specific Japanese style",
+        "Hiragana, Katakana, or Kanji script on all signs",
+        "Specific Japanese road sign shape and color (blue with white text, rounded corners)",
+        "Vending machines visible on roadsides",
+        "Specific Japanese road mirror (convex circular mirror) at intersections",
+        "Rice paddies in rural areas"
+      ],
+      "tier2_identifiers": [
+        "Very clean and well-maintained road surfaces",
+        "Specific Japanese guardrail style (white with reflectors)",
+        "Overhead power lines in very dense clusters",
+        "Specific Japanese street light design"
+      ],
+      "common_confusions": ["South Korea", "Taiwan"],
+      "elimination_clues": {
+        "vs_South_Korea": "Korean script (Hangul) looks very different from Japanese. Japanese has far more roadside vending machines. Japanese utility poles have very distinctive crossbar clustering.",
+        "vs_Taiwan": "Taiwan has Traditional Chinese characters mixed with Bopomofo phonetic script. Japanese uses a distinct mix of Hiragana, Katakana, and Kanji."
+      }
+    },
+    "South_Korea": {
+      "tier1_identifiers": [
+        "Hangul script on signs (distinctive rounded Korean characters unlike any other script)",
+        "Specific Korean road sign style (green with white text for highways)",
+        "Korean apartment block style — very tall numbered residential blocks with prominent numbers",
+        "Specific Korean utility pole style — concrete poles with distinct transformer boxes"
+      ],
+      "tier2_identifiers": [
+        "Korean commercial signage aesthetic (dense colorful shop signs)",
+        "Specific Korean street furniture and bus stop design"
+      ],
+      "common_confusions": ["Japan"],
+      "elimination_clues": {
+        "vs_Japan": "Hangul vs Japanese scripts are clearly different — Hangul uses squares and circles, Japanese uses more complex ideographic characters. South Korea has fewer roadside vending machines than Japan."
+      }
+    },
+    "Mongolia": {
+      "tier1_identifiers": [
+        "Ger (yurt) settlements visible alongside roads",
+        "Extremely vast open steppe with virtually no infrastructure for long distances",
+        "Specific Mongolian wooden slat fence styles (horizontal wooden boards, often unpainted)",
+        "Cyrillic script on signs (Mongolian Cyrillic, different feel from Russian)",
+        "Very rough unpaved roads — often just tracks across steppe",
+        "Extreme emptiness — no buildings visible for many kilometers"
+      ],
+      "tier2_identifiers": [
+        "Specific Mongolian utility pole style (often leaning, old Soviet-era)",
+        "Traditional Mongolian architectural elements in towns"
+      ],
+      "common_confusions": ["Kazakhstan", "Russia"],
+      "elimination_clues": {
+        "vs_Kazakhstan": "Mongolia has more extreme emptiness and more ger settlements. Kazakhstan has more Russian-influenced infrastructure and better road quality in many areas.",
+        "vs_Russia": "Mongolia has ger settlements not seen in Russia. Russia has better road quality and more modern infrastructure. Mongolian script mixing sometimes visible alongside Cyrillic."
+      }
+    },
+    "Senegal": {
+      "tier1_identifiers": [
+        "Yellow painted road centerlines (distinctively yellow, not white — very reliable Senegal identifier)",
+        "French language on signs",
+        "Specific brightly painted Senegalese transport vehicles (sept-place taxis)",
+        "Baobab trees visible (large trunk, sparse branches)",
+        "Specific West African road infrastructure with French colonial influence"
+      ],
+      "tier2_identifiers": [
+        "Specific Senegalese painted architecture",
+        "West African market infrastructure with French signage"
+      ],
+      "common_confusions": ["Nigeria", "Ghana", "Cameroon", "Ivory Coast"],
+      "elimination_clues": {
+        "vs_Nigeria": "Senegal is French-speaking with French signs. Nigerian signs are in English. Senegal has yellow road centerlines vs Nigerian white. Nigerian danfo yellow minibuses not present in Senegal.",
+        "vs_Ghana": "Ghana is English-speaking. Senegal is French-speaking. This is the most reliable distinguisher.",
+        "vs_Cameroon": "Cameroon is bilingual French/English with both on signs. Senegal is French only."
+      }
+    },
+    "Finland": {
+      "tier1_identifiers": [
+        "White or cream-colored road bollards (vs Sweden yellow/black — very reliable)",
+        "Finnish language on signs (very long compound words, double vowels like 'aa', 'oo', 'ii')",
+        "Dense conifer forest pressing right to the road edge",
+        "Specific Finnish road sign style (white background, black text, red border)",
+        "Lakes visible through trees (Finland has ~180,000 lakes)"
+      ],
+      "tier2_identifiers": [
+        "Finnish wooden house architecture (often red or yellow painted wood)",
+        "Specific Finnish road surface quality and lane markings"
+      ],
+      "common_confusions": ["Sweden", "Norway", "Estonia"],
+      "elimination_clues": {
+        "vs_Sweden": "Finland has white/cream bollards. Sweden has yellow and black bollards. This is THE most reliable Finland vs Sweden distinguisher. Finnish language has very long compound words unlike Swedish.",
+        "vs_Norway": "Norway is dramatically mountainous and fjord-heavy. Finland is much flatter with dense forests and lakes. Norwegian on signs looks like Swedish, not Finnish.",
+        "vs_Estonia": "Estonia has shorter, more compact words on signs. Estonian road infrastructure is slightly less maintained than Finnish."
+      }
+    },
+    "Sweden": {
+      "tier1_identifiers": [
+        "Yellow and black road bollards — highly distinctive, almost unique to Sweden",
+        "Swedish language on signs (similar to Norwegian but with specific letter combinations)",
+        "Specific Swedish road sign style and colors (blue highways, yellow route numbers)",
+        "Swedish Falu red (dark red) wooden houses in rural areas",
+        "Specific Swedish highway infrastructure (smooth, well-maintained)"
+      ],
+      "tier2_identifiers": [
+        "Swedish landscape — mix of forests and lakes, more open than Finland",
+        "Specific Swedish utility pole infrastructure"
+      ],
+      "common_confusions": ["Finland", "Norway"],
+      "elimination_clues": {
+        "vs_Finland": "Yellow and black bollards = Sweden. White/cream bollards = Finland. This is THE most reliable distinguisher between these two countries.",
+        "vs_Norway": "Norway has more dramatic mountain scenery and fjords. Sweden is flatter. Swedish route numbers use yellow on blue, Norwegian use different color scheme."
+      }
+    },
+    "New_Zealand": {
+      "tier1_identifiers": [
+        "Yellow centerlines on roads (vs Australian white centerlines — very reliable NZ identifier)",
+        "SH prefix on route signs (State Highway — e.g. SH1, SH2)",
+        "Specific New Zealand road sign font and style (slightly different from Australian)",
+        "Very green rolling hills (greener than most of Australia)",
+        "Specific New Zealand farmhouse architecture style"
+      ],
+      "tier2_identifiers": [
+        "NZ-specific utility pole style",
+        "Sheep farming infrastructure and green paddock fencing",
+        "Distinctive NZ vegetation mix (introduced and native)"
+      ],
+      "common_confusions": ["Australia"],
+      "elimination_clues": {
+        "vs_Australia": "NZ has yellow road centerlines, Australia has white. NZ uses SH route prefix, Australia uses different state-based systems. NZ is generally greener and more hilly than most of Australia. NZ has its own specific road sign font."
+      }
+    },
+    "Nigeria": {
+      "tier1_identifiers": [
+        "Yellow danfo minibuses — extremely distinctive Lagos transport, bright yellow",
+        "English language on signs",
+        "Specific Nigerian road infrastructure — often older, mixed condition",
+        "West African market architecture — corrugated iron roofs, dense stalls",
+        "Specific Nigerian painted commercial trucks with decorative text"
+      ],
+      "tier2_identifiers": [
+        "Specific Nigerian utility infrastructure — dense, often chaotic pole wiring",
+        "Nigerian commercial signage style — brightly painted shop fronts"
+      ],
+      "common_confusions": ["Ghana", "Cameroon"],
+      "elimination_clues": {
+        "vs_Ghana": "Both English-speaking. Nigerian yellow danfo minibuses are very distinctive. Lagos-scale infrastructure. Ghana has different bus styles.",
+        "vs_Cameroon": "Cameroon is bilingual French/English with both languages on signs. Nigeria is English only."
+      }
+    },
+    "South_Africa": {
+      "tier1_identifiers": [
+        "Bilingual English and Afrikaans on road signs (e.g. 'STOP / HALT', 'GIVE WAY / GEE PAD')",
+        "Specific South African road sign color scheme (green for national routes, blue/white for provincial)",
+        "N-prefixed national routes (N1, N2, N3 etc)",
+        "Distinctive South African fynbos vegetation (Western Cape — low shrubby heathland)",
+        "Cape Dutch whitewashed architecture in Western Cape"
+      ],
+      "tier2_identifiers": [
+        "South African suburban architecture (walled compounds, security gates)",
+        "Specific SA utility pole and power infrastructure"
+      ],
+      "common_confusions": ["Botswana", "Zimbabwe", "Namibia"],
+      "elimination_clues": {
+        "vs_Botswana": "South Africa has much more developed road infrastructure. Afrikaans on signs = South Africa confirmed (not Botswana).",
+        "vs_Namibia": "Namibia also has Afrikaans but also German on signs (three languages). South Africa has only English and Afrikaans. SA roads are generally better quality.",
+        "vs_Zimbabwe": "Zimbabwe has English only on signs, no Afrikaans. Zimbabwe infrastructure is less maintained."
+      }
+    },
+    "Botswana": {
+      "tier1_identifiers": [
+        "Distinctive diamond-shaped cattle warning signs on roads — unique to Botswana",
+        "Very flat semi-arid landscape with sparse mopane woodland",
+        "Sandy soil with sparse bush — specific Kalahari-type terrain",
+        "Specific Botswana road sign style (similar to SA but less bilingual)"
+      ],
+      "tier2_identifiers": [
+        "Specific Botswana infrastructure style — functional but less developed than SA",
+        "Okavango-style vegetation in northern Botswana"
+      ],
+      "common_confusions": ["South Africa", "Zimbabwe", "Namibia"],
+      "elimination_clues": {
+        "vs_South_Africa": "Botswana has much less developed road infrastructure than SA. Diamond-shaped cattle warning signs are specific to Botswana. No Afrikaans on Botswana signs.",
+        "vs_Zimbabwe": "Zimbabwe more agricultural with more trees. Botswana more arid and flat Kalahari terrain."
+      }
+    },
+    "Indonesia": {
+      "tier1_identifiers": [
+        "Bahasa Indonesia on signs (distinctive long compound words, no tones)",
+        "Specific Indonesian road sign style (red and white colors of national flag influence)",
+        "Dense tropical vegetation right to road edge",
+        "Very high motorcycle traffic density — Indonesia has more motorcycles than almost anywhere",
+        "Indonesian Islamic architecture elements — mosques with specific dome styles"
+      ],
+      "tier2_identifiers": [
+        "Indonesian kampung (village) architecture — zinc roofed small houses clustered densely",
+        "Specific road surface quality — often patched asphalt with drainage channels"
+      ],
+      "common_confusions": ["Malaysia", "Philippines", "Thailand"],
+      "elimination_clues": {
+        "vs_Malaysia": "Malaysia has trilingual signs (Malay, English, Chinese). Indonesia is almost exclusively Indonesian language. Malaysia roads are generally better quality.",
+        "vs_Philippines": "Philippines has heavy English usage on signs. Filipino vehicle styles differ. Philippines more mountainous in Luzon.",
+        "vs_Thailand": "Thai script is completely distinctive and unlike any other. If you see Thai script, it is Thailand not Indonesia."
+      }
+    },
+    "Turkey": {
+      "tier1_identifiers": [
+        "Turkish language on signs — distinctive letters: ş, ğ, ı, ö, ü, ç",
+        "Specific Turkish road sign style (green for highways, white for local)",
+        "Minarets visible in towns (mosques with tall thin towers)",
+        "Specific Turkish utility pole style — often concrete with distinctive brackets",
+        "Turkish tea garden (çay bahçesi) infrastructure visible in towns"
+      ],
+      "tier2_identifiers": [
+        "Specific Turkish architectural style — Ottoman-influenced in older areas",
+        "Turkish road surface quality — often good quality highways, varied rural quality"
+      ],
+      "common_confusions": ["Greece", "Bulgaria", "Georgia", "Azerbaijan"],
+      "elimination_clues": {
+        "vs_Greece": "Greek script (Α, Β, Γ) vs Turkish Latin script. Greece has more island and coastal feel with specific Greek architecture.",
+        "vs_Bulgaria": "Bulgarian uses Cyrillic script. Turkish uses Latin. Very reliable script-based distinguisher.",
+        "vs_Georgia": "Georgian script is completely unique and unlike any other alphabet. If you see Georgian script, it is Georgia not Turkey."
+      }
+    },
+    "Romania": {
+      "tier1_identifiers": [
+        "Romanian language on signs — distinctive diacritics: ș (s-comma), ț (t-comma), ă (a-breve)",
+        "Specific Romanian road sign style (EU-standard green highways, white local)",
+        "Romanian Orthodox church architecture — distinctive gold dome style",
+        "Specific Eastern European rural house style — plaster walls, often brightly painted gates",
+        "Older road infrastructure with specific Eastern European character"
+      ],
+      "tier2_identifiers": [
+        "Romanian utility pole style — often wooden, Soviet-era influenced in rural areas",
+        "Specific Romanian landscape — mix of plains, hills, and Carpathian mountains"
+      ],
+      "common_confusions": ["Bulgaria", "Moldova", "Hungary"],
+      "elimination_clues": {
+        "vs_Bulgaria": "Bulgarian uses Cyrillic script. Romanian uses Latin script with diacritics. This script difference is completely reliable.",
+        "vs_Hungary": "Hungarian has distinctive double-acute accents (ő, ű). Romanian has comma-below diacritics (ș, ț). Different alphabet feel.",
+        "vs_Moldova": "Moldova and Romania look very similar. Moldova may have Russian/Cyrillic signs alongside Romanian. Similar architecture."
+      }
+    },
+    "Kenya": {
+      "tier1_identifiers": [
+        "English language on signs",
+        "Specific Kenyan road sign style (similar to British standards, left-hand drive country)",
+        "East African savanna vegetation — acacia trees, red laterite soil",
+        "Specific Kenyan matatu minibus style — brightly decorated minibuses",
+        "Red laterite soil roads are very common in rural Kenya"
+      ],
+      "tier2_identifiers": [
+        "Specific Kenyan infrastructure — mix of modern and older",
+        "East African vernacular architectural style"
+      ],
+      "common_confusions": ["Tanzania", "Uganda", "Ethiopia"],
+      "elimination_clues": {
+        "vs_Tanzania": "Both East African with English. Kenya has more developed infrastructure near Nairobi. Very similar landscapes make these hard to distinguish without city names.",
+        "vs_Ethiopia": "Ethiopia uses Amharic script (Ge'ez/Ethiopic script) — completely distinctive. If you see Amharic script, it is Ethiopia, not Kenya.",
+        "vs_Uganda": "Very similar. Uganda drives on the left like Kenya. Look for specific road sign differences and city names."
+      }
+    },
+    "Brazil": {
+      "tier1_identifiers": [
+        "Portuguese language on signs (similar to Spanish but distinct — look for 'ã', 'ç', 'ão' endings)",
+        "Specific Brazilian state highway signs (e.g. BA-xxx for Bahia, SP-xxx for Sao Paulo)",
+        "Specific Brazilian road sign color scheme (white and blue for state routes)",
+        "Diverse terrain from Amazon jungle to Cerrado savanna to Caatinga desert",
+        "Specific Brazilian utility pole style in rural areas"
+      ],
+      "tier2_identifiers": [
+        "Brazilian favela architecture in urban outskirts",
+        "Specific Brazilian commercial truck painting style",
+        "BR-xxx federal highway signs"
+      ],
+      "common_confusions": ["Colombia", "Peru", "Bolivia", "Paraguay"],
+      "elimination_clues": {
+        "vs_Colombia": "Colombian signs use Spanish without the Portuguese 'ão' and 'ã' patterns. Brazilian signs have state prefixes (BA, SP, MG etc). Colombia has distinctive red BRT buses in Bogota.",
+        "vs_Peru": "Peru uses Spanish. Very different road infrastructure. Peruvian Andes terrain very distinctive.",
+        "vs_Bolivia": "Bolivia uses Spanish. More mountainous terrain. Less developed road infrastructure than coastal Brazil."
+      }
+    },
+    "Australia": {
+      "tier1_identifiers": [
+        "White road centerlines (vs New Zealand yellow — very reliable)",
+        "Specific Australian road sign font and style (distinctive font, state-specific colors)",
+        "Australian state route prefixes (NSW, VIC, QLD, WA, SA, TAS number systems)",
+        "Kangaroo or wombat warning signs",
+        "Eucalyptus (gum tree) vegetation — very distinctive bark patterns",
+        "Specific Australian outback red dirt roads"
+      ],
+      "tier2_identifiers": [
+        "Australian utility pole style",
+        "Specific Australian rural mailbox style",
+        "Australian highway infrastructure (STOP signs, give way triangles)"
+      ],
+      "common_confusions": ["New Zealand", "South Africa"],
+      "elimination_clues": {
+        "vs_New_Zealand": "Australia has white road centerlines, NZ has yellow. Australian route signs use state abbreviations, NZ uses SH prefix. Australia generally drier and flatter than NZ.",
+        "vs_South_Africa": "South Africa has bilingual English/Afrikaans signs. Australia is English only. Very different vegetation types."
+      }
+    },
+    "India": {
+      "tier1_identifiers": [
+        "Script on signs varies by region — Hindi (Devanagari), Tamil, Telugu, Kannada, Malayalam, Bengali etc",
+        "NH (National Highway) prefix on route signs",
+        "Specific Indian road sign style — yellow background for caution signs",
+        "Extremely dense and colorful commercial signage",
+        "Specific Indian auto-rickshaw (tuk-tuk) — three-wheeled yellow-black in many states",
+        "Colorfully decorated trucks with 'HORN PLEASE' or similar text"
+      ],
+      "tier2_identifiers": [
+        "Indian utility pole style — dense wiring clusters",
+        "Specific Indian road surface quality — often patched with concrete repairs"
+      ],
+      "common_confusions": ["Pakistan", "Bangladesh", "Nepal"],
+      "elimination_clues": {
+        "vs_Pakistan": "Pakistan uses Urdu script (Nastaliq style) on signs. Indian signs use Devanagari or regional scripts. Indian auto-rickshaws often yellow-black, Pakistani ones different.",
+        "vs_Bangladesh": "Bangladesh uses Bengali script similar to West Bengal, India. Very hard to distinguish without city names.",
+        "vs_Nepal": "Nepali uses Devanagari like Hindi but landscape is much more mountainous. Nepal has very distinctive Himalayan backdrop."
+      }
+    },
+    "Russia": {
+      "tier1_identifiers": [
+        "Cyrillic script on all signs (Russian Cyrillic)",
+        "Specific Russian federal highway sign style (M-prefix routes)",
+        "Soviet-era apartment blocks (khrushchyovka) — 5-story grey concrete blocks",
+        "Specific Russian utility pole style — wooden poles, Soviet-era transformers",
+        "Russian Orthodox church domes (gold onion domes) visible in towns"
+      ],
+      "tier2_identifiers": [
+        "Dense birch and pine forests",
+        "Russian road surface quality — often poor outside major cities with potholes"
+      ],
+      "common_confusions": ["Ukraine", "Belarus", "Kazakhstan", "Mongolia"],
+      "elimination_clues": {
+        "vs_Ukraine": "Very similar. Ukraine now often has yellow and blue national colors on infrastructure. Russian signs use standard white/green. Hard to distinguish in rural areas.",
+        "vs_Belarus": "Belarus and Russia look very similar. Belarus slightly better road quality in many areas.",
+        "vs_Kazakhstan": "Kazakhstan uses both Cyrillic and Latin now. Less dense forests. More steppe landscape."
+      }
+    },
+    "France": {
+      "tier1_identifiers": [
+        "French language on signs",
+        "Specific French road sign style — blue direction signs with white text",
+        "Specific French yellow road centerlines in older areas (white more recently)",
+        "Plane tree (platane) rows lining rural roads",
+        "Specific French town name sign style (white rectangular with black border)"
+      ],
+      "tier2_identifiers": [
+        "French rural architecture — stone farmhouses, tile roofs",
+        "Specific French utility pole style"
+      ],
+      "common_confusions": ["Belgium", "Switzerland", "Luxembourg"],
+      "elimination_clues": {
+        "vs_Belgium": "Belgium has bilingual French and Dutch/Flemish in many areas. French-only signs = more likely France.",
+        "vs_Switzerland": "Switzerland has four languages (French, German, Italian, Romansh) and uses CH country code on vehicles. French-speaking Switzerland looks similar to France."
+      }
+    },
+    "Germany": {
+      "tier1_identifiers": [
+        "German language on signs (distinctive compound words, ß, ü, ö, ä)",
+        "Specific German Autobahn sign style (blue for Autobahn, yellow for Bundesstraße)",
+        "Specific German road sign fonts and colors",
+        "Very high quality road surfaces especially on major routes",
+        "German speed limit sign style (white circle with red border)"
+      ],
+      "tier2_identifiers": [
+        "German utility infrastructure — very neat and organized",
+        "Specific German rural architecture — half-timber (Fachwerk) houses"
+      ],
+      "common_confusions": ["Austria", "Switzerland", "Netherlands"],
+      "elimination_clues": {
+        "vs_Austria": "Very similar. Austria has A-prefix route signs, Germany B-prefix for Bundesstraße. Austrian landscape often more mountainous. AT country code vs DE.",
+        "vs_Switzerland": "Switzerland uses CH country code. Swiss road signs have specific Swiss design. Switzerland is much more mountainous.",
+        "vs_Netherlands": "Dutch is a completely different language from German on signs. Dutch landscape is extremely flat with windmills and very distinctive."
+      }
+    },
+    "United_States": {
+      "tier1_identifiers": [
+        "English only on most signs",
+        "Specific US highway shield shapes (US route shield, Interstate I-xxx blue shield)",
+        "US-style stop signs (red octagon, very standard)",
+        "Yellow school bus visible in residential areas",
+        "Fire hydrants visible on sidewalks (specific US red style)"
+      ],
+      "tier2_identifiers": [
+        "American mailbox style at road edge",
+        "US utility pole style — wooden, with transformers",
+        "Wide road lanes with specific US road marking patterns"
+      ],
+      "common_confusions": ["Canada", "Australia"],
+      "elimination_clues": {
+        "vs_Canada": "Canada has bilingual English/French in many areas (especially Quebec, New Brunswick, federal signs). US is English only. Canadian route signs have different shapes.",
+        "vs_Australia": "Australian road signs use different fonts and specific AU state abbreviations. Australian gum trees are very distinctive."
+      }
+    },
+    "Canada": {
+      "tier1_identifiers": [
+        "Bilingual English and French on federal signs (e.g. 'STOP / ARRET')",
+        "Specific Canadian route sign shapes (different from US shields)",
+        "Canadian provincial flags and branding on some infrastructure",
+        "Quebec: French only on most signs — most reliable Quebec identifier",
+        "Red maple leaf on some official signs and infrastructure"
+      ],
+      "tier2_identifiers": [
+        "Canadian road surface quality — similar to US but with provincial variation",
+        "Specific Canadian utility infrastructure"
+      ],
+      "common_confusions": ["United States"],
+      "elimination_clues": {
+        "vs_United_States": "Bilingual STOP/ARRET signs = Canada confirmed. Quebec French-only signs = Canada confirmed. Canadian route sign shapes are different from US highway shields."
+      }
+    },
+    "Argentina": {
+      "tier1_identifiers": [
+        "Spanish language on signs",
+        "Specific Argentine road sign style — blue and white national colors",
+        "RN (Ruta Nacional) and RP (Ruta Provincial) prefixes on route signs",
+        "Specific Argentine utility pole style",
+        "Pampas — flat agricultural grassland horizon to horizon"
+      ],
+      "tier2_identifiers": [
+        "Argentine commercial truck style",
+        "Specific Argentine rural architecture"
+      ],
+      "common_confusions": ["Chile", "Uruguay", "Brazil"],
+      "elimination_clues": {
+        "vs_Chile": "Chile is much more mountainous (Andes dominate). Argentine pampas are flat. Chilean RUT road signs vs Argentine RN/RP.",
+        "vs_Uruguay": "Almost identical. Uruguay is smaller, infrastructure slightly less developed. Hard to distinguish without city names.",
+        "vs_Brazil": "Brazilian signs are in Portuguese, not Spanish. Very different."
+      }
+    },
+    "Chile": {
+      "tier1_identifiers": [
+        "Spanish language on signs",
+        "Dramatic Andes mountains visible to east — almost always present",
+        "Specific Chilean road sign style (similar to Argentine but Chilean)",
+        "Ruta 5 (Pan-American Highway) very long, straight, with distinctive signage",
+        "Pacific Ocean visible to west in coastal areas",
+        "Atacama Desert in north — absolutely unique barren landscape"
+      ],
+      "tier2_identifiers": [
+        "Specific Chilean utility pole style",
+        "Chilean commercial truck and bus design"
+      ],
+      "common_confusions": ["Argentina", "Peru"],
+      "elimination_clues": {
+        "vs_Argentina": "Chile much more mountainous — Andes very prominent. Argentine pampas are flat. Chile is a very narrow country so mountains or coast usually visible.",
+        "vs_Peru": "Very similar in some areas. Peruvian road signs use slightly different design standards. Peru has more indigenous cultural elements visible."
+      }
+    },
+    "Mexico": {
+      "tier1_identifiers": [
+        "Spanish language on signs",
+        "Specific Mexican road sign style — green for federal highways",
+        "MEX-prefix on federal route signs",
+        "Speed bump warning signs — very common in Mexico (topes)",
+        "Specific Mexican utility pole style — often with distinctive transformer",
+        "PEMEX gas stations — very distinctive red, green, white branding"
+      ],
+      "tier2_identifiers": [
+        "Mexican commercial truck and bus style",
+        "Specific Mexican rural architecture — concrete block construction"
+      ],
+      "common_confusions": ["Guatemala", "Colombia", "USA (border areas)"],
+      "elimination_clues": {
+        "vs_Guatemala": "Guatemala has more mountainous terrain and different road sign standards. Mexican infrastructure generally more developed.",
+        "vs_Colombia": "Colombia has very different mountain terrain. Colombian cities like Medellin have distinctive infrastructure."
+      }
+    }
+  }
+}

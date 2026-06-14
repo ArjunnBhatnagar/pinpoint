@@ -1,0 +1,100 @@
+{
+  "country": "Mexico",
+  "regions": [
+    {
+      "name": "Northern Mexico",
+      "states": ["Chihuahua", "Sonora", "Coahuila", "Nuevo Leon", "Tamaulipas", "Baja California"],
+      "visual_identifiers": [
+        "Chihuahuan or Sonoran desert landscape",
+        "sparse cacti including saguaro in Sonora",
+        "very arid terrain with mountains",
+        "US border infrastructure visible in places",
+        "specific northern Mexican road signs",
+        "Monterrey urban area distinctive",
+        "dry desert scrub vegetation"
+      ],
+      "state_distinguishers": {
+        "Chihuahua": "Largest state, Chihuahuan desert, Copper Canyon area distinctive",
+        "Sonora": "Saguaro cactus visible, Sonoran desert, US border feel",
+        "Nuevo_Leon": "Monterrey urban area, Sierra Madre mountains backdrop, most industrialized northern state",
+        "Baja_California": "Pacific coast peninsula feel, very distinctive geography"
+      },
+      "route_sign_clues": "Mexican federal highways use number only or MEX prefix. State highways use state abbreviation.",
+      "gemini_hint": "Saguaro cactus = Sonora. Industrial urban with mountain backdrop = Monterrey/Nuevo Leon. Pacific peninsula feel = Baja California. Copper Canyon terrain = Chihuahua.",
+      "common_false_positives": [
+        "Desert terrain — shared across northern states",
+        "Arid mountains — shared across region"
+      ]
+    },
+    {
+      "name": "Central Mexico",
+      "states": ["Mexico City", "Estado de Mexico", "Puebla", "Hidalgo", "Tlaxcala", "Morelos", "Queretaro", "Guanajuato"],
+      "visual_identifiers": [
+        "high altitude plateau landscape",
+        "colonial architecture in towns",
+        "volcanic peaks visible (Popocatepetl etc)",
+        "dense urban infrastructure near Mexico City",
+        "specific central Mexican road sign style",
+        "agave and nopal cactus vegetation",
+        "temperate highland climate"
+      ],
+      "state_distinguishers": {
+        "Mexico_City": "Massive urban sprawl, specific CDMX infrastructure, Metro system visible",
+        "Puebla": "Volcanic peaks visible, Talavera tile architecture, colonial city center",
+        "Guanajuato": "Colonial mining town architecture, colorful buildings on hillsides"
+      },
+      "route_sign_clues": "Mexico City has specific Periferico and Anillo Periférico signage. State highways well signed.",
+      "gemini_hint": "Massive urban sprawl = Mexico City area. Volcanic peak (Popocatepetl) = Puebla/Estado de Mexico. Colorful colonial hillside town = Guanajuato. Agave fields = Jalisco or Guanajuato.",
+      "common_false_positives": [
+        "Colonial architecture — appears across all central states",
+        "Highland plateau — shared across region"
+      ]
+    },
+    {
+      "name": "Pacific Coast",
+      "states": ["Jalisco", "Nayarit", "Colima", "Michoacan", "Guerrero", "Oaxaca"],
+      "visual_identifiers": [
+        "Pacific Ocean coastal feel",
+        "tropical to subtropical vegetation",
+        "specific Pacific Mexican infrastructure",
+        "resort infrastructure near Acapulco/Puerto Vallarta",
+        "mountainous terrain dropping to coast",
+        "specific Oaxacan indigenous architecture"
+      ],
+      "state_distinguishers": {
+        "Jalisco": "Guadalajara urban area, tequila agave fields, mariachi cultural infrastructure",
+        "Oaxaca": "Indigenous architecture, very distinctive colorful markets, Zapotec cultural elements",
+        "Guerrero": "Acapulco resort infrastructure"
+      },
+      "route_sign_clues": "Pacific coast highway (MEX-200) runs along coast.",
+      "gemini_hint": "Agave fields in rows = Jalisco tequila region. Indigenous colorful markets = Oaxaca. Resort beach infrastructure = Guerrero or Nayarit.",
+      "common_false_positives": [
+        "Tropical vegetation — shared across Pacific coast",
+        "Mountainous coast — shared across region"
+      ]
+    },
+    {
+      "name": "Gulf Coast and Southeast",
+      "states": ["Veracruz", "Tabasco", "Chiapas", "Campeche", "Yucatan", "Quintana Roo"],
+      "visual_identifiers": [
+        "humid tropical vegetation",
+        "Maya archaeological site infrastructure",
+        "Yucatan peninsula flat limestone terrain",
+        "Gulf of Mexico coastal feel",
+        "very lush green jungle in Chiapas",
+        "specific Yucatan road style",
+        "resort infrastructure in Cancun area"
+      ],
+      "state_distinguishers": {
+        "Yucatan_Peninsula": "Completely flat limestone terrain, Maya ruins signage, specific Yucatan vegetation (low scrub)",
+        "Chiapas": "Dramatic jungle mountains, indigenous Maya culture very visible, most dramatic scenery in Mexico",
+        "Quintana_Roo": "Cancun resort infrastructure, Caribbean coast feel, very developed tourist area"
+      },
+      "route_sign_clues": "Yucatan peninsula has specific highway numbering. Maya site signs very distinctive.",
+      "gemini_hint": "Completely flat + Maya ruins signs = Yucatan peninsula. Dramatic jungle mountains = Chiapas. Caribbean resort infrastructure = Quintana Roo. Oil infrastructure = Tabasco or Campeche.",
+      "common_false_positives": [
+        "Tropical vegetation — shared across southeast"
+      ]
+    }
+  ]
+}

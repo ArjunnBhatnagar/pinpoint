@@ -1,0 +1,96 @@
+{
+  "country": "Brazil",
+  "regions": [
+    {
+      "name": "Amazon North",
+      "states": ["Amazonas", "Para", "Roraima", "Amapa", "Rondonia", "Acre"],
+      "visual_identifiers": [
+        "dense tropical rainforest canopy",
+        "red or orange dirt roads common",
+        "high humidity visible in haze",
+        "wide brown rivers",
+        "specific Amazon-region road infrastructure",
+        "wooden stilt houses near water"
+      ],
+      "state_distinguishers": {
+        "Amazonas_vs_Para": "Amazonas more remote jungle. Para has more deforestation frontier visible. Belem urban area in Para."
+      },
+      "route_sign_clues": "BR federal routes. State routes use AM (Amazonas), PA (Para) prefix.",
+      "gemini_hint": "Dense tropical canopy with red dirt road = Amazon region almost certainly. River visible = likely Para or Amazonas."
+    },
+    {
+      "name": "Northeast",
+      "states": ["Bahia", "Ceara", "Pernambuco", "Maranhao", "Piaui", "Rio Grande do Norte", "Paraiba", "Sergipe", "Alagoas"],
+      "visual_identifiers": [
+        "caatinga dry scrub vegetation",
+        "very dry sparse thorny bushes",
+        "red/orange soil",
+        "pastel colored architecture in towns",
+        "specific northeastern Brazilian house styles",
+        "flat to gently rolling terrain",
+        "intermittent rivers dry in drought"
+      ],
+      "state_distinguishers": {
+        "Bahia_vs_Ceara": "Bahia larger and more varied. Ceara more consistently arid. Salvador coastal area distinctive.",
+        "Pernambuco_coastal": "Recife urban area very distinctive with bridges and rivers."
+      },
+      "route_sign_clues": "BA (Bahia), CE (Ceara), PE (Pernambuco) state route prefixes.",
+      "gemini_hint": "Dry thorny caatinga scrub with red soil = Northeast Brazil. Pastel colored small town = likely northeastern interior."
+    },
+    {
+      "name": "Southeast",
+      "states": ["Sao Paulo", "Rio de Janeiro", "Minas Gerais", "Espirito Santo"],
+      "visual_identifiers": [
+        "most developed infrastructure in Brazil",
+        "specific Sao Paulo highway system",
+        "Atlantic forest remnants on slopes",
+        "dense urban sprawl around Sao Paulo",
+        "mountainous terrain in Minas Gerais",
+        "specific Rio de Janeiro dramatic topography"
+      ],
+      "state_distinguishers": {
+        "Sao_Paulo_vs_Minas": "Sao Paulo more industrial and flat. Minas has more colonial towns and mining landscape.",
+        "Rio_de_Janeiro": "Distinctive mountains meeting ocean. Favela architecture on hillsides."
+      },
+      "route_sign_clues": "SP (Sao Paulo), RJ (Rio), MG (Minas Gerais) prefixes.",
+      "gemini_hint": "Mountains dramatically meeting coast = Rio de Janeiro almost certainly. Dense industrial highway = likely Sao Paulo state."
+    },
+    {
+      "name": "South",
+      "states": ["Rio Grande do Sul", "Santa Catarina", "Parana"],
+      "visual_identifiers": [
+        "European influenced architecture",
+        "green rolling hills",
+        "temperate climate vegetation",
+        "looks significantly different from rest of Brazil",
+        "Germanic and Italian architectural influences",
+        "wine country in Rio Grande do Sul",
+        "Araucaria pine trees distinctive"
+      ],
+      "state_distinguishers": {
+        "Rio_Grande_do_Sul_vs_Santa_Catarina": "RS more gaucho/pampas feel in south, Germanic towns in north. SC more varied coastal and mountain.",
+        "Parana_vs_Santa_Catarina": "Parana has Iguazu Falls area. Both have Araucaria pines."
+      },
+      "route_sign_clues": "RS, SC, PR prefixes on state routes.",
+      "gemini_hint": "Araucaria pine trees (flat-topped umbrella shaped) = Southern Brazil almost certainly. European style architecture = Rio Grande do Sul or Santa Catarina."
+    },
+    {
+      "name": "Cerrado Central",
+      "states": ["Goias", "Mato Grosso", "Mato Grosso do Sul", "Tocantins", "Distrito Federal"],
+      "visual_identifiers": [
+        "savanna landscape with twisted trees",
+        "red clay soil very common",
+        "sparse woodland with grassland mix",
+        "flat to gently rolling terrain",
+        "large agricultural frontier",
+        "wide straight roads through farmland"
+      ],
+      "state_distinguishers": {
+        "Goias_vs_Mato_Grosso": "Goias more developed near Brasilia. Mato Grosso more frontier agricultural.",
+        "Distrito_Federal": "Brasilia distinctive modernist architecture and very specific urban planning."
+      },
+      "route_sign_clues": "GO, MT, MS prefixes. Brasilia has distinctive road naming system.",
+      "gemini_hint": "Twisted cerrado trees with red clay soil = Central Brazil cerrado. Modernist architecture = Brasilia/DF."
+    }
+  ]
+}

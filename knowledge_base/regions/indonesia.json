@@ -1,0 +1,115 @@
+{
+  "country": "Indonesia",
+  "regions": [
+    {
+      "name": "Java",
+      "states": ["Jakarta", "West Java", "Central Java", "East Java", "Yogyakarta", "Banten"],
+      "visual_identifiers": [
+        "most densely populated island on earth",
+        "dense urban infrastructure near Jakarta",
+        "specific Javanese batik and cultural elements",
+        "volcanic peaks visible throughout island",
+        "rice terraces in rural areas",
+        "specific Indonesian road sign style",
+        "dense tropical vegetation between cities"
+      ],
+      "state_distinguishers": {
+        "Jakarta": "Megacity infrastructure, TransJakarta BRT buses distinctive, very dense urban",
+        "Yogyakarta": "Cultural capital feel, Borobudur and Prambanan temple proximity, more traditional atmosphere",
+        "East_Java": "Bromo volcano area distinctive, more rural feel than west"
+      },
+      "route_sign_clues": "Trans-Java Toll Road running east-west. Green and white Indonesian highway signs.",
+      "gemini_hint": "TransJakarta red BRT buses = Jakarta. Borobudur Buddhist temple = Yogyakarta area. Bromo volcanic landscape = East Java. Most densely packed urban = Java generally.",
+      "common_false_positives": [
+        "Tropical vegetation — shared across Indonesia",
+        "Volcanic peaks — shared with Sumatra and Bali"
+      ]
+    },
+    {
+      "name": "Sumatra",
+      "states": ["North Sumatra", "West Sumatra", "Riau", "South Sumatra", "Lampung", "Aceh"],
+      "visual_identifiers": [
+        "dense equatorial rainforest",
+        "palm oil plantation rows very common",
+        "specific Sumatran road infrastructure",
+        "Lake Toba area distinctive",
+        "Minangkabau curved roof architecture",
+        "orangutan warning signs in places"
+      ],
+      "state_distinguishers": {
+        "North_Sumatra": "Lake Toba caldera visible, Batak cultural architecture, Medan city infrastructure",
+        "West_Sumatra": "Minangkabau curved roof architecture very distinctive, Padang city",
+        "Aceh": "Most Islamic province, Arabic script alongside Indonesian, northernmost tip"
+      },
+      "route_sign_clues": "Trans-Sumatra Highway running north-south.",
+      "gemini_hint": "Curved buffalo horn roofs = West Sumatra/Minangkabau. Lake caldera = North Sumatra/Lake Toba. Arabic script + Islamic architecture = Aceh. Palm oil rows = Sumatra or Borneo.",
+      "common_false_positives": [
+        "Palm oil plantations — also in Malaysian Borneo and peninsular Malaysia",
+        "Rainforest — shared across Sumatra"
+      ]
+    },
+    {
+      "name": "Kalimantan (Borneo)",
+      "states": ["West Kalimantan", "Central Kalimantan", "South Kalimantan", "East Kalimantan", "North Kalimantan"],
+      "visual_identifiers": [
+        "dense rainforest",
+        "large rivers",
+        "palm oil and coal mining infrastructure",
+        "less developed roads than Java",
+        "specific Dayak cultural elements in places",
+        "new capital city Nusantara under construction in East Kalimantan"
+      ],
+      "state_distinguishers": {
+        "East_Kalimantan": "New capital Nusantara construction visible, oil and gas infrastructure, Balikpapan city",
+        "South_Kalimantan": "Banjarmasin floating market infrastructure, more developed than other provinces"
+      },
+      "route_sign_clues": "Road infrastructure much less developed than Java.",
+      "gemini_hint": "New capital construction = East Kalimantan. Floating market = South Kalimantan. Very remote rainforest = Central Kalimantan.",
+      "common_false_positives": [
+        "Rainforest and rivers — hard to distinguish provinces"
+      ]
+    },
+    {
+      "name": "Bali and Nusa Tenggara",
+      "states": ["Bali", "West Nusa Tenggara", "East Nusa Tenggara"],
+      "visual_identifiers": [
+        "Balinese Hindu temple architecture",
+        "rice terraces",
+        "specific Bali tourist infrastructure",
+        "drier landscape east of Bali",
+        "Komodo dragon warning signs in Flores",
+        "specific Balinese stone carving decoration"
+      ],
+      "state_distinguishers": {
+        "Bali": "Hindu temple gates (candi bentar), very distinctive carved stone decoration, rice terraces, tourist infrastructure",
+        "Lombok": "More Islamic than Bali, Rinjani volcano visible",
+        "Flores": "Komodo dragon signage, very rugged dry terrain"
+      },
+      "route_sign_clues": "Bali has specific tourist road infrastructure.",
+      "gemini_hint": "Hindu temple gates = Bali almost certainly. Komodo warning signs = Flores/East Nusa Tenggara. Rinjani volcano = Lombok.",
+      "common_false_positives": [
+        "Rice terraces — also in Java and Philippines"
+      ]
+    },
+    {
+      "name": "Sulawesi and Eastern Indonesia",
+      "states": ["North Sulawesi", "Central Sulawesi", "South Sulawesi", "Maluku", "Papua"],
+      "visual_identifiers": [
+        "Torajan boat-shaped roof architecture in South Sulawesi",
+        "very remote feel in Papua",
+        "specific eastern Indonesian infrastructure",
+        "tropical coast feel",
+        "Papua has unique tribal cultural elements"
+      ],
+      "state_distinguishers": {
+        "South_Sulawesi": "Torajan boat-shaped roofs very distinctive, Makassar city",
+        "Papua": "Most remote province, tribal cultural elements, very undeveloped infrastructure"
+      },
+      "route_sign_clues": "Very limited road infrastructure in eastern Indonesia.",
+      "gemini_hint": "Boat-shaped roofs = South Sulawesi/Toraja area. Extremely remote tribal = Papua. Makassar urban = South Sulawesi.",
+      "common_false_positives": [
+        "Tropical coast — shared across eastern Indonesia"
+      ]
+    }
+  ]
+}
