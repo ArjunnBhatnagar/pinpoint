@@ -1,10 +1,10 @@
 # Pinpoint
 
-An AI-powered GeoGuessr assistant that identifies your country, region, and state from Street View screenshots. Pinpoint uses Gemini 2.5 Flash to run a 13-stage reasoning pipeline — capturing multiple views, running OCR, retrieving country-specific reference images, and cross-checking environmental clues against a meta-knowledge base of visual identifiers (road signs, utility poles, bollards, lane markings, flora, terrain, and more) — to make a grounded, confidence-verified prediction.
+An AI-powered GeoGuessr assistant that identifies your country, region, and state from Street View screenshots. Pinpoint uses Gemini 2.5 Flash to run a 13-stage reasoning pipeline - capturing multiple views, running OCR, retrieving country-specific reference images, and cross-checking environmental clues against a meta-knowledge base of visual identifiers (road signs, utility poles, bollards, lane markings, flora, terrain, and more) - to make a grounded, confidence-verified prediction.
 
 ## Features
 
-- **Smart capture** — 360° scan + reactive exploration to collect the highest-evidence screenshots before analysis
+- **Smart capture** - 360° scan + reactive exploration to collect the highest-evidence screenshots before analysis
 - **13-category visual meta analysis** — bollards, road paint, utility poles, lane markings, terrain, flora, architecture, license plates, road signs, language/script, street names, signposts, driving side
 - **1,840+ reference image database** — 125 countries scraped from [geohints.com](https://geohints.com), used for grounded image-to-image comparison
 - **Regional and state-level reasoning** — sub-location knowledge bases for 15 countries (Australia, Russia, USA, Canada, Brazil, Mexico, Argentina, Chile, Japan, South Africa, India, Indonesia, Nigeria, Kenya, Colombia)
