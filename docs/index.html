@@ -35,12 +35,10 @@ body{
   overflow-x:hidden;
   cursor:none;
 }
-
 /* ── CURSOR ── */
 #cursor{position:fixed;width:8px;height:8px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s,background .15s}
 #cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(212,160,84,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s}
 body:has(a:hover) #cursor,body:has(button:hover) #cursor{width:16px;height:16px}
-
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -56,7 +54,6 @@ nav{
 .nav-links a:hover{color:var(--cyan)}
 .nav-cta{font-family:var(--font-mono);font-size:.75rem;padding:.5rem 1.25rem;border:1px solid var(--cyan);color:var(--cyan);background:transparent;cursor:none;letter-spacing:.08em;transition:background .2s,color .2s}
 .nav-cta:hover{background:var(--cyan);color:var(--bg)}
-
 /* ── HERO ── */
 #hero{
   min-height:100vh;
@@ -124,7 +121,6 @@ h1.hero-title span{color:var(--cyan)}
 .hero-stat-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-top:.25rem}
 .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:600px}
 #globe-canvas{width:100%;height:100%}
-
 /* Terminal overlay on globe */
 .terminal-card{
   position:absolute;bottom:10%;left:-5%;
@@ -149,7 +145,6 @@ h1.hero-title span{color:var(--cyan)}
 .data-card-label{color:var(--grey);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
 .data-card-value{font-size:1.3rem;color:var(--cyan);font-weight:700;line-height:1}
 .data-card-sub{color:var(--grey);font-size:.6rem;margin-top:.2rem}
-
 /* ── MARQUEE ── */
 .marquee-wrap{
   border-top:1px solid var(--border);
@@ -171,7 +166,6 @@ h1.hero-title span{color:var(--cyan)}
 }
 .marquee-item:nth-child(odd){color:var(--cyan)}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
 /* ── SHARED SECTION STYLES ── */
 section{padding:8rem 3rem;position:relative;overflow:hidden}
 .section-label{
@@ -181,7 +175,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
   display:flex;align-items:center;gap:.6rem;
 }
 .section-label::before{content:'';width:1.5rem;height:1px;background:var(--cyan)}
-
 /* ── STATS SECTION ── */
 #stats{
   background:var(--surface);
@@ -219,7 +212,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
   font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
   color:var(--grey);margin-top:.75rem;line-height:1.6;
 }
-
 /* ── FEATURE BLOCKS ── */
 .feature-block{
   display:grid;
@@ -279,7 +271,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
     linear-gradient(90deg,rgba(212,160,84,0.02) 1px,transparent 1px);
   background-size:30px 30px;
 }
-
 /* Country confidence viz */
 .conf-bar-wrap{padding:2rem;position:relative;z-index:1;width:100%}
 .conf-title{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:1.5rem}
@@ -296,7 +287,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
   opacity:0;transition:opacity .3s .9s;
 }
 .conf-fill.animate + .conf-dot,.conf-bar:has(.conf-fill.animate) .conf-dot{opacity:1}
-
 /* Map grid viz */
 .map-grid-viz{padding:1.5rem;position:relative;z-index:1;width:100%}
 .map-cell-grid{display:grid;grid-template-columns:repeat(30,1fr);gap:2px}
@@ -307,7 +297,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
   background:transparent;
 }
 .map-cell:hover{transform:scale(1.4);z-index:2;position:relative}
-
 /* Pipeline viz */
 .pipeline-viz{padding:2rem;position:relative;z-index:1;width:100%}
 .pipe-step{
@@ -326,7 +315,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
 .pipe-step.active .pipe-icon{background:rgba(212,160,84,0.1);border-color:var(--cyan)}
 .pipe-name{font-family:var(--font-mono);font-size:.7rem;color:var(--white)}
 .pipe-detail{font-size:.75rem;color:var(--grey);margin-top:.2rem;font-weight:300}
-
 /* ── TERMINAL SECTION — keeps cold cyan intentionally ── */
 #terminal-section{
   background:var(--dark);
@@ -363,7 +351,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
 .t-line-wrap{display:block;margin:.12rem 0}
 .cursor-blink{display:inline-block;width:.5em;height:1em;background:#00d4ff;animation:blink .8s step-end infinite;vertical-align:text-bottom}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
 /* ── ACCURACY SECTION ── */
 #accuracy{padding:8rem 3rem;position:relative}
 .accuracy-inner{
@@ -403,7 +390,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
 .acc-bar-wrap{width:120px;height:2px;background:rgba(255,255,255,0.06);position:relative}
 .acc-bar{height:100%;background:var(--cyan);width:0;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
 .acc-val{font-family:var(--font-mono);font-size:.75rem;color:var(--white);min-width:3.5rem;text-align:right}
-
 /* ── TECH STACK ── */
 #tech{
   background:var(--surface);
@@ -438,7 +424,6 @@ section{padding:8rem 3rem;position:relative;overflow:hidden}
   letter-spacing:.1em;text-transform:uppercase;
   padding:.2rem .5rem;border:1px solid rgba(212,160,84,0.2);color:var(--cyan2);
 }
-
 /* ── FOOTER ── */
 footer{
   padding:6rem 3rem 3rem;
@@ -458,7 +443,7 @@ footer{
 }
 .footer-wordmark:hover{-webkit-text-stroke-color:rgba(212,160,84,0.4)}
 .footer-bottom{
-  display:flex;justify-content:space-between;align-items:flex-end;
+  display:flex;justify-content:flex-end;align-items:flex-end;
   border-top:1px solid var(--border);
   padding-top:2rem;
 }
@@ -466,7 +451,6 @@ footer{
 .footer-links a{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:var(--cyan)}
 .footer-copy{font-family:var(--font-mono);font-size:.65rem;color:rgba(138,122,106,0.5);letter-spacing:.08em}
-
 /* ── CANDIDATE ELIMINATION VIZ ── */
 .elim-viz{padding:2rem;position:relative;z-index:1;width:100%}
 .elim-list{display:flex;flex-direction:column;gap:.9rem;min-height:230px}
@@ -501,7 +485,6 @@ footer{
 .elim-result.show{opacity:1}
 .elim-result-label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--grey)}
 .elim-result-val{font-family:var(--font-display);font-size:2rem;color:var(--cyan);letter-spacing:.04em}
-
 /* ── META BOX HOVER ── */
 .meta-box{
   padding:12px 14px;
@@ -517,16 +500,13 @@ footer{
   transform:translateY(-2px);
   box-shadow:0 4px 20px rgba(212,160,84,0.12);
 }
-
 /* ── TAG HOVER ── */
 .tag{transition:background 0.2s, border-color 0.2s, color 0.2s}
 .tag:hover{background:rgba(212,160,84,0.15);border-color:rgba(212,160,84,0.6);color:var(--white)}
-
 /* ── PIPE STEP HOVER ── */
 .pipe-step{transition:opacity .4s, transform .4s, background 0.2s}
 .pipe-step:hover{background:rgba(212,160,84,0.05);border-radius:4px}
 .pipe-step:hover .pipe-icon{background:rgba(212,160,84,0.12);border-color:var(--cyan)}
-
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in-view{opacity:1;transform:translateY(0)}
 .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
@@ -535,17 +515,14 @@ footer{
 .reveal-right.in-view{opacity:1;transform:translateX(0)}
 .stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}
 .stagger-4{transition-delay:.4s}.stagger-5{transition-delay:.5s}
-
 /* ── MISC ── */
 .cyan{color:var(--cyan)}
 .divider-line{height:1px;background:linear-gradient(90deg,transparent,rgba(212,160,84,0.25),transparent);margin:0 3rem}
 </style>
 </head>
 <body>
-
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
-
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Pinpoint</a>
@@ -557,7 +534,6 @@ footer{
   </ul>
   <a href="https://github.com/ArjunnBhatnagar/pinpoint" target="_blank" class="nav-cta" style="text-decoration:none;display:inline-block">Try Demo →</a>
 </nav>
-
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg-grid"></div>
@@ -595,12 +571,11 @@ footer{
     </div>
     <div class="data-card">
       <div class="data-card-label">Accuracy Score</div>
-      <div class="data-card-value">80<span style="font-size:.8rem">%</span></div>
+      <div class="data-card-value">82<span style="font-size:.8rem">%</span></div>
       <div class="data-card-sub">Country accuracy</div>
     </div>
   </div>
 </section>
-
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track" id="marquee">
@@ -633,7 +608,6 @@ footer{
     <span class="marquee-item">Mountain Profiles</span>
   </div>
 </div>
-
 <!-- STATS -->
 <section id="stats">
   <div class="stats-grid">
@@ -655,7 +629,6 @@ footer{
     </div>
   </div>
 </section>
-
 <!-- FEATURE 1: Vision Analysis -->
 <div class="feature-block" id="features">
   <div class="feature-text reveal-left">
@@ -712,7 +685,6 @@ footer{
     </div>
   </div>
 </div>
-
 <!-- FEATURE 2: Geo Reasoning -->
 <div class="feature-block reverse">
   <div class="feature-visual reveal-left">
@@ -779,7 +751,6 @@ footer{
     </div>
   </div>
 </div>
-
 <!-- FEATURE 3: State Reasoning -->
 <div class="feature-block">
   <div class="feature-text reveal-left">
@@ -807,9 +778,7 @@ footer{
     </div>
   </div>
 </div>
-
 <div class="divider-line"></div>
-
 <!-- TERMINAL SECTION -->
 <section id="terminal-section">
   <div class="terminal-layout">
@@ -856,7 +825,6 @@ footer{
     </div>
   </div>
 </section>
-
 <!-- ACCURACY -->
 <section id="accuracy">
   <div class="accuracy-inner">
@@ -864,8 +832,8 @@ footer{
       <div class="section-label reveal">Top-1 Accuracy</div>
       <div class="accuracy-num-wrap">
         <div class="accuracy-big reveal" id="acc-num">
-          80
-          <div class="accuracy-fill">80</div>
+          82
+          <div class="accuracy-fill">82</div>
         </div>
         <div class="accuracy-pct reveal stagger-1">%</div>
       </div>
@@ -878,8 +846,8 @@ footer{
       <ul class="accuracy-breakdown reveal stagger-3" id="acc-breakdown">
         <li>
           <span class="acc-label">Country accuracy</span>
-          <div class="acc-bar-wrap"><div class="acc-bar" data-w="80"></div></div>
-          <span class="acc-val">80%+</span>
+          <div class="acc-bar-wrap"><div class="acc-bar" data-w="82"></div></div>
+          <span class="acc-val">82%</span>
         </li>
         <li>
           <span class="acc-label">Region accuracy</span>
@@ -905,9 +873,7 @@ footer{
     </div>
   </div>
 </section>
-
 <div class="divider-line"></div>
-
 <!-- TECH STACK -->
 <section id="tech">
   <div class="section-label reveal">Built With</div>
@@ -952,28 +918,19 @@ footer{
     </div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-wordmark">PINPOINT</div>
   <div class="footer-bottom">
-    <ul class="footer-links">
-      <li><a href="#">GitHub</a></li>
-      <li><a href="#">Docs</a></li>
-      <li><a href="#">API</a></li>
-      <li><a href="#">Research</a></li>
-    </ul>
     <div class="footer-copy">© 2026 Pinpoint — AI-Powered Geographic Intelligence</div>
   </div>
 </footer>
-
 <script>
 /* ── CURSOR ── */
 const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
 (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
-
 /* ── THREE.JS GLOBE ── */
 (function(){
   const canvas=document.getElementById('globe-canvas');
@@ -1053,7 +1010,6 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.le
     renderer.setSize(W2,H2);
   });
 })();
-
 /* ── INTERSECTION OBSERVER ── */
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -1087,9 +1043,7 @@ const io=new IntersectionObserver(entries=>{
     }
   });
 },{threshold:.2});
-
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stat-block').forEach(el=>io.observe(el));
-
 /* ── CONFIDENCE BARS ── */
 const confIO=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -1105,7 +1059,6 @@ const confIO=new IntersectionObserver(entries=>{
   });
 },{threshold:.3});
 document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
-
 /* ── CANDIDATE ELIMINATION ANIMATION ── */
 (function(){
   const list=document.getElementById('elim-list');
@@ -1113,7 +1066,6 @@ document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
   const resultBox=document.getElementById('elim-result');
   const finalEl=document.getElementById('elim-final');
   if(!list)return;
-
   // Real-style sub-location reasoning rounds based on regional knowledge base
   const rounds=[
     {
@@ -1189,19 +1141,15 @@ document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
       ],
     },
   ];
-
   let idx=0;
-
   function render(round){
     label.style.opacity='0';
     label.style.transition='opacity .3s';
     list.style.opacity='0';
     resultBox.classList.remove('show');
-
     setTimeout(()=>{
       label.textContent=`Sub-Location Reasoning — ${round.country}`;
       list.innerHTML='';
-
       round.candidates.forEach(c=>{
         const row=document.createElement('div');
         row.className='elim-row';
@@ -1212,11 +1160,9 @@ document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
         `;
         list.appendChild(row);
       });
-
       label.style.opacity='1';
       list.style.opacity='1';
       list.style.transition='opacity .3s';
-
       // Animate bars filling in
       requestAnimationFrame(()=>{
         const rows=list.querySelectorAll('.elim-row');
@@ -1225,7 +1171,6 @@ document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
           const pct=round.candidates[i].pct;
           setTimeout(()=>{fill.style.width=pct+'%';},i*120+150);
         });
-
         // After bars fill, eliminate losers and highlight winner
         setTimeout(()=>{
           rows.forEach((row,i)=>{
@@ -1243,15 +1188,12 @@ document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
       });
     },300);
   }
-
   render(rounds[0]);
-
   setInterval(()=>{
     idx=(idx+1)%rounds.length;
     render(rounds[idx]);
   },5500);
 })();
-
 /* ── TERMINAL CARD CYCLING ── */
 (function(){
   const rounds=[
@@ -1270,7 +1212,6 @@ document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
   const rv=document.getElementById('tc-region-val');
   const sv=document.getElementById('tc-status-val');
   if(!cv)return;
-
   function updateCard(){
     const r=rounds[idx];
     const card=cv.closest('.terminal-card');
@@ -1287,7 +1228,6 @@ document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
   }
   setInterval(updateCard,2500);
 })();
-
 /* ── TERMINAL TYPEWRITER ── */
 (function(){
   const lines=document.querySelectorAll('#terminal-body [id^=tl-]');
