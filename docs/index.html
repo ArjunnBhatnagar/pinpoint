@@ -1,3 +1,50 @@
+Claude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pinpoint index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -515,6 +562,22 @@ footer{
 .reveal-right.in-view{opacity:1;transform:translateX(0)}
 .stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}
 .stagger-4{transition-delay:.4s}.stagger-5{transition-delay:.5s}
+/* ── RESEARCH SECTION ── */
+#research{background:var(--dark);border-top:1px solid var(--border);padding:8rem 3rem}
+.research-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.research-body{font-size:.95rem;line-height:1.8;color:var(--grey);font-weight:300;max-width:480px;margin-bottom:1.25rem}
+.research-body strong{color:var(--white);font-weight:500}
+.crest-badge{display:inline-flex;align-items:center;gap:.6rem;margin:1rem 0 2rem;padding:.5rem 1rem;border:1px solid rgba(212,160,84,0.35);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
+.report-btn{display:inline-block;text-decoration:none}
+.compare-card{background:var(--surface);border:1px solid var(--border);padding:2rem}
+.compare-title{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:1.5rem}
+.compare-table{width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:.75rem}
+.compare-table th{text-align:right;color:var(--grey);font-weight:400;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase}
+.compare-table th:first-child,.compare-table td:first-child{text-align:left}
+.compare-table td{text-align:right;padding:.85rem 0;border-bottom:1px solid var(--border);color:var(--white)}
+.compare-table td.bad{color:#f87171}
+.compare-table td.good{color:var(--cyan)}
+.compare-note{margin-top:1.25rem;font-size:.8rem;line-height:1.7;color:var(--grey);font-weight:300}
 /* ── MISC ── */
 .cyan{color:var(--cyan)}
 .divider-line{height:1px;background:linear-gradient(90deg,transparent,rgba(212,160,84,0.25),transparent);margin:0 3rem}
@@ -530,6 +593,7 @@ footer{
     <li><a href="#features">Features</a></li>
     <li><a href="#terminal-section">Pipeline</a></li>
     <li><a href="#accuracy">Accuracy</a></li>
+    <li><a href="#research">Research</a></li>
     <li><a href="#tech">Tech</a></li>
   </ul>
   <a href="https://github.com/ArjunnBhatnagar/pinpoint" target="_blank" class="nav-cta" style="text-decoration:none;display:inline-block">Try Demo →</a>
@@ -837,12 +901,12 @@ footer{
         </div>
         <div class="accuracy-pct reveal stagger-1">%</div>
       </div>
-      <div class="accuracy-desc reveal stagger-2">Country-level correct predictions<br>on held-out evaluation set</div>
+      <div class="accuracy-desc reveal stagger-2">Country-level correct predictions<br>across 50 test rounds</div>
     </div>
     <div class="accuracy-right">
       <div class="section-label reveal">Performance Breakdown</div>
       <h2 class="reveal stagger-1" style="font-family:var(--font-display);font-size:clamp(2rem,3vw,3rem);letter-spacing:.02em;line-height:1.1;margin-bottom:.5rem">BUILT FOR<br><span class="cyan">PRECISION</span></h2>
-      <p class="reveal stagger-2" style="font-size:.85rem;line-height:1.8;color:var(--grey);font-weight:300;margin-bottom:1.5rem">Rigorous evaluation across all 125 countries, with dedicated benchmarks for the 15 sub-region nations where granular reasoning is most valuable.</p>
+      <p class="reveal stagger-2" style="font-size:.85rem;line-height:1.8;color:var(--grey);font-weight:300;margin-bottom:1.5rem">Evaluated over 50 test rounds, with dedicated state-level benchmarks for the 15 countries where granular reasoning is most valuable.</p>
       <ul class="accuracy-breakdown reveal stagger-3" id="acc-breakdown">
         <li>
           <span class="acc-label">Country accuracy</span>
@@ -865,6 +929,37 @@ footer{
           <span class="acc-val">125 countries</span>
         </li>
       </ul>
+    </div>
+  </div>
+</section>
+<div class="divider-line"></div>
+<!-- RESEARCH -->
+<section id="research">
+  <div class="research-inner">
+    <div class="reveal-left">
+      <div class="section-label">Research Report</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4.5rem);line-height:1;letter-spacing:.02em;margin-bottom:1.5rem">CALIBRATED<br><span class="cyan">CONFIDENCE</span></h2>
+      <p class="research-body">Pinpoint is a 13-stage AI pipeline that identifies the country, region and state of a location from a single Street View screenshot. It combines <strong>OpenCV</strong> for image-quality filtering, <strong>Gemini 2.5 Flash</strong> for visual reasoning, and a reference database of <strong>1,840+ images across 125 countries</strong>.</p>
+      <p class="research-body">Instead of relying on what a model "remembers," Pinpoint grounds its reasoning by comparing live imagery against real reference examples, and recalibrates its confidence based on the strength of the evidence.</p>
+      <p class="research-body"><strong>82%</strong> country-level accuracy across 50 test rounds &middot; <strong>100%</strong> when a definitive identifier was detected &middot; <strong>~76%</strong> state/region accuracy across 15 countries.</p>
+      <div class="crest-badge">&#9733; CREST Gold Award &middot; British Science Association</div>
+      <div>
+        <a href="Pinpoint_project_report.pdf" target="_blank" rel="noopener" class="btn-primary report-btn">Read the Full Report (PDF) &rarr;</a>
+      </div>
+    </div>
+    <div class="compare-card reveal-right">
+      <div class="compare-title">Single prompt vs. full pipeline &mdash; same 25 locations</div>
+      <table class="compare-table">
+        <thead>
+          <tr><th>Metric</th><th>Single Gemini call</th><th>Pinpoint</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Correct countries</td><td>14 / 25</td><td>21 / 25</td></tr>
+          <tr><td>Country accuracy</td><td class="bad">56%</td><td class="good">84%</td></tr>
+          <tr><td>Average confidence</td><td class="bad">~95%</td><td class="good">~85%</td></tr>
+        </tbody>
+      </table>
+      <p class="compare-note">The single prompt was ~95% confident but right only 56% of the time. Pinpoint's average confidence (~85%) closely matched its actual accuracy (84%).</p>
     </div>
   </div>
 </section>
@@ -1243,3 +1338,4 @@ document.querySelectorAll('.conf-bar-wrap').forEach(el=>confIO.observe(el));
 </script>
 </body>
 </html>
+Claude finished the response
